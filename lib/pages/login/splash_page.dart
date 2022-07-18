@@ -1,4 +1,6 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
+import 'package:caronapp_front/pages/login/login_page.dart';
+import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -25,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
     Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-            pageBuilder: (c, a1, a2) => HomePage(),
+            pageBuilder: (c, a1, a2) => LoginPage(),
             transitionsBuilder: (c, anim, a2, child) =>
                 FadeTransition(opacity: anim, child: child),
             transitionDuration: Duration(milliseconds: timer)));
@@ -43,12 +45,12 @@ class _SplashPageState extends State<SplashPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/LogoIMT.png",
+                  AppLogo.imt,
                   filterQuality: FilterQuality.high,
                   scale: 4,
                 ),
                 SizedBox(height: 32),
-                Image.asset("assets/images/CaronApp.png",
+                Image.asset(AppLogo.caronApp,
                     filterQuality: FilterQuality.high, scale: 3),
                 SizedBox(height: 32),
                 SpinKitRing(color: AppColors.vermelhoGrena, size: 40)
