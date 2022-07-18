@@ -1,4 +1,6 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
+import 'package:caronapp_front/pages/login/login_page.dart';
+import 'package:caronapp_front/pages/login/splash_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
             primary: AppColors.vermelhoGrena,
             surface: AppColors.cinzaBackground,
           )),
-      home: HomePage(),
+      home: SplashPage(),
     );
   }
 }
