@@ -12,11 +12,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.cinzaBackground,
-      body: Center(
-        child: Text(
-          "Bem Vinde ao CaronApp",
-          style: TextStyle(fontSize: 16),
+      body: Container(
+        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+        child: Center(
+          child: Text(
+            "Bem Vinde ao CaronApp",
+            style: TextStyle(fontSize: 16),
+          ),
         ),
       ),
     );
