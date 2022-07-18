@@ -1,10 +1,10 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
-import 'package:caronapp_front/pages/login/login_page.dart';
+import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../shared/themes/app_colors.dart';
+import '../../../shared/themes/app_colors.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -13,16 +13,16 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-int timer = 750;
+int timer = 1500;
 
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+    _navigateToLogin();
   }
 
-  void _navigateToHome() async {
+  void _navigateToLogin() async {
     await Future.delayed(Duration(milliseconds: timer), () {});
     Navigator.pushReplacement(
         context,

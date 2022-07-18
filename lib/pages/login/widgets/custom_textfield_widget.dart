@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/themes/app_colors.dart';
 
-class RaWidget extends StatelessWidget {
+class CustomTextFieldWidget extends StatelessWidget {
   final tamanhoTela;
-  const RaWidget({Key? key, required this.tamanhoTela}) : super(key: key);
+  final String valor;
+
+  const CustomTextFieldWidget(
+      {Key? key, required this.tamanhoTela, required this.valor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +16,12 @@ class RaWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "RA:",
+          valor,
           style: TextStyle(fontSize: 16),
         ),
         SizedBox(
-          width: tamanhoTela.width / 2,
+          width: 240,
+          height: 40,
           child: TextField(
             style: TextStyle(fontSize: 16),
             decoration: InputDecoration(

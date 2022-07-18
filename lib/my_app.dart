@@ -1,6 +1,6 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
-import 'package:caronapp_front/pages/login/login_page.dart';
-import 'package:caronapp_front/pages/login/splash_page.dart';
+import 'package:caronapp_front/pages/login/login/login_page.dart';
+import 'package:caronapp_front/pages/login/splash/splash_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
