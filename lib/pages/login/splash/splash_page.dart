@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    // _navigateToLogin();
+    _navigateToLogin();
   }
 
   void _navigateToLogin() async {
