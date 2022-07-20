@@ -13,7 +13,7 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-int timer = 1500;
+int timer = 750;
 
 class _SplashPageState extends State<SplashPage> {
   @override
