@@ -44,16 +44,26 @@ class _SplashPageState extends State<SplashPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Expanded(
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 64),
+                        Image.asset(AppLogo.caronApp,
+                            filterQuality: FilterQuality.high, scale: 3),
+                        SizedBox(height: 32),
+                        SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
+                      ],
+                    ),
+                  ),
+                ),
                 Image.asset(
                   AppLogo.imt,
                   filterQuality: FilterQuality.high,
-                  scale: 4,
+                  scale: 6,
                 ),
                 SizedBox(height: 32),
-                Image.asset(AppLogo.caronApp,
-                    filterQuality: FilterQuality.high, scale: 3),
-                SizedBox(height: 32),
-                SpinKitRing(color: AppColors.vermelhoGrena, size: 40)
               ],
             ),
           ),
