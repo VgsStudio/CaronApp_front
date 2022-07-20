@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../shared/themes/app_colors.dart';
 
-class AppBarMapWidget extends StatelessWidget {
+class AppBarMapWidget extends StatefulWidget {
   final String valor;
+  final fullfield;
 
-  const AppBarMapWidget({Key? key, required this.valor}) : super(key: key);
+  const AppBarMapWidget({
+    Key? key,
+    required this.valor,
+    required this.fullfield,
+  }) : super(key: key);
 
+  @override
+  State<AppBarMapWidget> createState() => _AppBarMapWidgetState();
+}
+
+class _AppBarMapWidgetState extends State<AppBarMapWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: 10,
-      toolbarHeight: 160,
+      automaticallyImplyLeading: false,
+      toolbarHeight: 136,
       backgroundColor: AppColors.cinzaEscuro,
       title: Row(
         children: [
@@ -51,13 +62,16 @@ class AppBarMapWidget extends StatelessWidget {
                 width: 296,
                 height: 40,
                 child: TextFormField(
+                  onFieldSubmitted: (val) {
+                    widget.fullfield();
+                  },
                   style: TextStyle(
                     fontSize: 20,
                     color: AppColors.cinzaClaro,
                   ),
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(left: 12),
-                      hintText: valor,
+                      hintText: widget.valor,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
@@ -73,40 +87,28 @@ class AppBarMapWidget extends StatelessWidget {
           ),
         ],
       ),
-      // title: TextFormField(
-      //   onFieldSubmitted: (val) {
-      //     // double lat = -23.5274126;
-      //     // double long = -46.6785033;
-
-      //     // LatLng position = LatLng(lat, long);
-      //     // mapController.moveCamera(CameraUpdate.newLatLng(position));
-      //     // final Marker marker = Marker(
-      //     //     markerId: MarkerId("1234"),
-      //     //     position: position,
-      //     //     infoWindow: const InfoWindow(
-      //     //         title: "Parmeira", snippet: "São Paulo/Brasil"));
-
-      //     // setState(() {
-      //     //   markers.add(marker);
-      //     // });
-      //   },
-      // ),
       leading: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 32,
-                ),
-              )),
+          SizedBox(
+            child: IconButton(
+                iconSize: 4,
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                )),
+          ),
         ],
       ),
+      leadingWidth: 8,
     );
   }
 }
