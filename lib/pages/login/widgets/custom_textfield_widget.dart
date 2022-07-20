@@ -15,19 +15,17 @@ class CustomTextFieldWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          valor,
-          style: TextStyle(fontSize: 16),
-        ),
         SizedBox(
           width: 240,
           height: 40,
           child: TextField(
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
             decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(left: 12),
+                hintText: valor,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     width: 0,
                     style: BorderStyle.none,
                   ),

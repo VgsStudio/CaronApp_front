@@ -33,58 +33,76 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  AppLogo.caronApp,
-                  filterQuality: FilterQuality.high,
-                  scale: 5,
-                ),
-                SizedBox(height: 64),
-                CustomTextFieldWidget(tamanhoTela: tamanhoTela, valor: "RA:"),
-                SizedBox(height: 24),
-                CustomTextFieldWidget(
-                    tamanhoTela: tamanhoTela, valor: "Senha:"),
-                TextButton(
-                    onPressed: navigateToHome,
-                    child: Text("Esqueci minha senha"),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                    )),
-                SizedBox(height: 40),
-                BotaoVermelho(
-                  onPressed: navigateToHome,
-                  child: 'Login',
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text("Não é cadastrado?"),
-                  TextButton(
+                Expanded(
+                    child: Center(
+                        child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppLogo.caronApp,
+                      filterQuality: FilterQuality.high,
+                      scale: 5,
+                    ),
+                    SizedBox(height: 72),
+                    CustomTextFieldWidget(
+                        tamanhoTela: tamanhoTela, valor: "RA"),
+                    SizedBox(height: 24),
+                    CustomTextFieldWidget(
+                        tamanhoTela: tamanhoTela, valor: "Senha"),
+                    TextButton(
+                        onPressed: navigateToHome,
+                        child: Text(
+                          "Esqueci minha senha",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        )),
+                    SizedBox(height: 40),
+                    BotaoVermelho(
                       onPressed: navigateToHome,
-                      child: Text("Cadastre-se"),
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.transparent),
-                      ))
-                ]),
-                SizedBox(height: 40),
+                      child: 'Login',
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text("Não é cadastrado?"),
+                      TextButton(
+                          onPressed: navigateToHome,
+                          child: Text(
+                            "Cadastre-se",
+                            style:
+                                TextStyle(decoration: TextDecoration.underline),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.transparent),
+                          ))
+                    ])
+                  ],
+                ))),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
                       AppLogo.imtQuadrado,
                       filterQuality: FilterQuality.high,
-                      width: 88,
-                      height: 88,
+                      width: 96,
+                      height: 96,
                     ),
-                    const SizedBox(
-                      width: 72,
+                    SizedBox(
+                      width: tamanhoTela.width * 0.1,
                     ),
                     Image.asset(
                       AppLogo.dev,
                       filterQuality: FilterQuality.high,
-                      width: 100,
-                      height: 100,
+                      width: 116,
+                      height: 116,
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 48,
                 )
               ],
             ),
