@@ -21,14 +21,19 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leadingWidth: 32,
       automaticallyImplyLeading: false,
       toolbarHeight: 136,
       backgroundColor: AppColors.cinzaEscuro,
       title: Row(
         children: [
-          ImageIcon(
-            size: 56,
-            AssetImage("assets/images/where to.png"),
+          Container(
+            width: 16,
+            padding: EdgeInsets.only(right: 8),
+            child: ImageIcon(
+              size: 56,
+              AssetImage("assets/images/where to.png"),
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +95,8 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
       leading: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
+          Container(
+            padding: EdgeInsets.only(left: 8),
             child: IconButton(
                 iconSize: 4,
                 padding: EdgeInsets.zero,
@@ -108,7 +114,6 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
           ),
         ],
       ),
-      leadingWidth: 8,
     );
   }
 }
