@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:caronapp_front/pages/login/widgets/custom_textfield_widget.dart';
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
+import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
@@ -18,6 +19,9 @@ class MapaPage extends StatefulWidget {
 }
 
 class _MapaPageState extends State<MapaPage> {
+  late var locais = locaisList;
+  String query = '';
+
   late GoogleMapController mapController;
   Set<Marker> markers = Set<Marker>();
   bool isOpcoesOpen = false;
@@ -51,6 +55,7 @@ class _MapaPageState extends State<MapaPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(136),
           child: AppBarMapWidget(
+            onChanged: searchLocal,
             booleano: trocarBooleano,
             fullfield: _navigateTo,
             valor: index != -1 && !isOpcoesOpen
@@ -76,9 +81,10 @@ class _MapaPageState extends State<MapaPage> {
                             .toList())
                 }),
             OpcoesWidget(
+              locais: locais,
               isOpcoesOpen: isOpcoesOpen,
               choose: _navigateTo,
-            )
+            ),
           ],
         ));
   }
@@ -124,6 +130,20 @@ class _MapaPageState extends State<MapaPage> {
   void trocarBooleano() {
     setState(() {
       isOpcoesOpen = !isOpcoesOpen;
+    });
+  }
+
+  void searchLocal(String query) {
+    final locais = locaisList.where((local) {
+      final titleLower = local.title.toLowerCase();
+      final searchLower = query.toLowerCase();
+
+      return titleLower.contains(searchLower);
+    }).toList();
+
+    setState(() {
+      this.query = query;
+      this.locais = locais;
     });
   }
 }

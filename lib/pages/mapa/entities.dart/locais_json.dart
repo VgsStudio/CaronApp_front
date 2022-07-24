@@ -2,7 +2,7 @@ import 'package:caronapp_front/pages/mapa/entities.dart/local.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-final locais = <Local>[
+final locaisList = <Local>[
   Local(
       "Estação São Caetano do Sul",
       -23.6101473,

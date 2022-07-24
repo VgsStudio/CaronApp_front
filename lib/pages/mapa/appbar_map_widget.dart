@@ -7,12 +7,14 @@ class AppBarMapWidget extends StatefulWidget {
   final String valor;
   final booleano;
   final fullfield;
+  final onChanged;
 
   const AppBarMapWidget({
     Key? key,
     required this.valor,
     required this.fullfield,
     required this.booleano,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -69,6 +71,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextFormField(
+                  onChanged: widget.onChanged,
                   onTap: () {
                     widget.booleano();
                   },

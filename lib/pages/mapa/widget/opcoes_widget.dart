@@ -1,11 +1,18 @@
-import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../entities.dart/Local.dart';
 
 class OpcoesWidget extends StatefulWidget {
   final bool isOpcoesOpen;
   final choose;
-  OpcoesWidget({Key? key, required this.isOpcoesOpen, this.choose})
+  final locais;
+
+  OpcoesWidget(
+      {Key? key,
+      required this.isOpcoesOpen,
+      required this.choose,
+      required this.locais})
       : super(key: key);
 
   @override
@@ -18,7 +25,7 @@ class _OpcoesWidgetState extends State<OpcoesWidget> {
     return widget.isOpcoesOpen
         ? Scaffold(
             body: ListView.builder(
-              itemCount: locais.length,
+              itemCount: widget.locais.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   height: 56,
@@ -41,7 +48,7 @@ class _OpcoesWidgetState extends State<OpcoesWidget> {
                           ),
                         ),
                         Text(
-                          locais[index].title,
+                          widget.locais[index].title,
                           style: TextStyle(
                               color: AppColors.brancosSub,
                               fontSize: 20,
