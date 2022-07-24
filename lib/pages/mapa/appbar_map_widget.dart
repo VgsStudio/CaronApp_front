@@ -5,12 +5,14 @@ import '../../shared/themes/app_colors.dart';
 
 class AppBarMapWidget extends StatefulWidget {
   final String valor;
+  final booleano;
   final fullfield;
 
   const AppBarMapWidget({
     Key? key,
     required this.valor,
     required this.fullfield,
+    required this.booleano,
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 296,
+                width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 decoration: BoxDecoration(
                   color: AppColors.preto,
@@ -64,12 +66,13 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                 height: 16,
               ),
               Container(
-                width: 296,
+                width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextFormField(
-                  onFieldSubmitted: (val) {
-                    widget.fullfield();
+                  onTap: () {
+                    widget.booleano();
                   },
+                  onFieldSubmitted: (val) {},
                   style: TextStyle(
                     fontSize: 20,
                     color: AppColors.cinzaClaro,

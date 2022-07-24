@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:caronapp_front/pages/login/widgets/custom_textfield_widget.dart';
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
+import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +20,8 @@ class MapaPage extends StatefulWidget {
 class _MapaPageState extends State<MapaPage> {
   late GoogleMapController mapController;
   Set<Marker> markers = Set<Marker>();
-  List _items = [];
+  bool isOpcoesOpen = false;
+  int index = -1;
 
   // DADOS MOCKADOS NESSA STRING
   var polyLinePontis;
@@ -49,12 +51,14 @@ class _MapaPageState extends State<MapaPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(136),
           child: AppBarMapWidget(
+            booleano: trocarBooleano,
             fullfield: _navigateTo,
-            valor: 'Para onde deseja ir?',
+            valor: index != -1 && !isOpcoesOpen
+                ? locais[index].title
+                : 'Para onde deseja ir?',
           ),
         ),
         body: Stack(
-          alignment: Alignment.center,
           children: [
             GoogleMap(
                 markers: markers,
@@ -71,42 +75,55 @@ class _MapaPageState extends State<MapaPage> {
                             .map((e) => LatLng(e.latitude, e.longitude))
                             .toList())
                 }),
+            OpcoesWidget(
+              isOpcoesOpen: isOpcoesOpen,
+              choose: _navigateTo,
+            )
           ],
         ));
   }
 
   // Local Mockado
-  void _navigateTo() async {
-    int index = 1;
+  void _navigateTo(op) async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    setState(() {
+      index = op;
+      isOpcoesOpen = false;
+    });
 
-    var item = Locais.items[0]["locais"][index];
+    var local = locais[index];
 
-    double lat = item["lat"];
-    double long = item["long"];
+    double lat = local.lat;
+    double long = local.long;
 
     LatLng position = LatLng(lat, long);
 
     final Marker marker = Marker(
-        markerId: MarkerId(item["markerId"]),
+        markerId: MarkerId(local.markerId),
         position: position,
-        icon: BitmapDescriptor.defaultMarkerWithHue(item["hue"]),
-        infoWindow:
-            InfoWindow(title: item["markerId"], snippet: item["snippet"]));
+        icon: BitmapDescriptor.defaultMarkerWithHue(local.hue),
+        infoWindow: InfoWindow(title: local.markerId, snippet: local.snippet));
 
     final bounds = LatLngBounds(
-      northeast: LatLng(item["bounds"]["northeast"]["lat"],
-          item["bounds"]["northeast"]["lng"]),
-      southwest: LatLng(item["bounds"]["southwest"]["lat"],
-          item["bounds"]["southwest"]["lng"]),
+      northeast: LatLng(local.latNortheast, local.longNortheast),
+      southwest: LatLng(local.latSouthwest, local.longSouthwest),
     );
 
     mapController.moveCamera(CameraUpdate.newLatLngBounds(bounds, 0));
-    // mapController.moveCamera(CameraUpdate.newLatLng(LatLng(lat, long)));
 
-    polyLinePontis = PolylinePoints().decodePolyline(item["polyline"]);
+    polyLinePontis = PolylinePoints().decodePolyline(local.polyline);
 
     setState(() {
+      if (markers.length > 1) {
+        markers.remove(markers.elementAt(1));
+      }
       markers.add(marker);
+    });
+  }
+
+  void trocarBooleano() {
+    setState(() {
+      isOpcoesOpen = !isOpcoesOpen;
     });
   }
 }
