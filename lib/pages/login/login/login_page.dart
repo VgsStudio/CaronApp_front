@@ -2,7 +2,7 @@ import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/botoes/app_botoes.dart';
+import '../../../shared/widgets/botaoVermelho_widget.dart';
 import '../../../shared/logo/app_logos.dart';
 import '../widgets/custom_textfield_widget.dart';
 
@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                               MaterialStateProperty.all(Colors.transparent),
                         )),
                     SizedBox(height: 40),
-                    BotaoVermelho(
+                    BotaoVermelhoWidget(
                       onPressed: navigateToHome,
                       child: 'Login',
                     ),

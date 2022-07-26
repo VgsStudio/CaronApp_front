@@ -1,4 +1,4 @@
-import 'package:caronapp_front/shared/botoes/app_botoes.dart';
+import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                 "Bem Vinde ao CaronApp",
                 style: TextStyle(fontSize: 16),
               ),
-              BotaoVermelho(child: "Mapa", onPressed: _navigateToMapa)
+              BotaoVermelhoWidget(child: "Mapa", onPressed: _navigateToMapa)
             ],
           ),
         ),
