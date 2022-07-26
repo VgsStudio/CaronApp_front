@@ -1,10 +1,9 @@
-import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
-import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../shared/themes/app_colors.dart';
+import '../../../shared/themes/app_logos.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -38,34 +37,24 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: AnimatedContainer(
         duration: Duration(milliseconds: timer),
-        child: Container(
-          decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 64),
-                        Image.asset(AppLogo.caronApp,
-                            filterQuality: FilterQuality.high, scale: 3),
-                        SizedBox(height: 32),
-                        SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
-                      ],
-                    ),
-                  ),
-                ),
-                Image.asset(
+        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(AppLogo.caronApp,
+                  filterQuality: FilterQuality.high, scale: 3),
+              SizedBox(height: 32),
+              SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
                   AppLogo.imt,
                   filterQuality: FilterQuality.high,
                   scale: 6,
                 ),
-                SizedBox(height: 32),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -36,7 +36,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
 
   # Fonte utilizada no projeto KoHo
-  google_fonts: ^3.0.1
+  google_fonts: ^2.2.0
 
   # Google maps api
   google_place: ^0.4.7

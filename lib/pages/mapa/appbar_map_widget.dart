@@ -98,28 +98,20 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
           ),
         ],
       ),
-      leading: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 8),
-            child: IconButton(
-                iconSize: 4,
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                    size: 32,
-                  ),
-                )),
-          ),
-        ],
-      ),
+      leading: IconButton(
+          iconSize: 4,
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 32,
+            ),
+          )),
     );
   }
 }

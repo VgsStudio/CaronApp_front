@@ -1,7 +1,7 @@
-import 'package:caronapp_front/shared/botoes/app_botoes.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/widgets/botoes/app_botoes.dart';
 import '../mapa/mapa_page.dart';
 
 class HomePage extends StatefulWidget {
