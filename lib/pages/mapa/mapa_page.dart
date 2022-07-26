@@ -6,6 +6,7 @@ import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -85,8 +86,18 @@ class _MapaPageState extends State<MapaPage> {
               isOpcoesOpen: isOpcoesOpen,
               choose: _navigateTo,
             ),
+            index != -1
+                ? BotaoVermelhoWidget(
+                    child: "Procurar motoristas",
+                    onPressed: _mostrarMotoristas,
+                  )
+                : SizedBox.shrink()
           ],
         ));
+  }
+
+  void _mostrarMotoristas() {
+    print(index);
   }
 
   // Local Mockado

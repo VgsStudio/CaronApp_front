@@ -15,10 +15,10 @@ class LoginPage extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => HomePage(),
+              pageBuilder: (c, a1, a2) => const HomePage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
-              transitionDuration: Duration(milliseconds: 500)));
+              transitionDuration: const Duration(milliseconds: 500)));
     }
 
     var tamanhoTela = MediaQuery.of(context).size;
@@ -43,40 +43,40 @@ class LoginPage extends StatelessWidget {
                       filterQuality: FilterQuality.high,
                       scale: 5,
                     ),
-                    SizedBox(height: 72),
+                    const SizedBox(height: 72),
                     CustomTextFieldWidget(
                         tamanhoTela: tamanhoTela, valor: "RA"),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     CustomTextFieldWidget(
                         tamanhoTela: tamanhoTela, valor: "Senha"),
                     TextButton(
                         onPressed: navigateToHome,
-                        child: Text(
-                          "Esqueci minha senha",
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
-                        ),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        child: const Text(
+                          "Esqueci minha senha",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
                         )),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,
                       child: 'Login',
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text("Não é cadastrado?"),
+                      const Text("Não é cadastrado?"),
                       TextButton(
                           onPressed: navigateToHome,
-                          child: Text(
-                            "Cadastre-se",
-                            style:
-                                TextStyle(decoration: TextDecoration.underline),
-                          ),
                           style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.transparent),
+                          ),
+                          child: const Text(
+                            "Cadastre-se",
+                            style:
+                                TextStyle(decoration: TextDecoration.underline),
                           ))
                     ])
                   ],
@@ -101,7 +101,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 48,
                 )
               ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../shared/themes/app_colors.dart';
 
@@ -33,7 +32,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
         children: [
           Container(
             width: 16,
-            padding: EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 8),
             child: ImageIcon(
               size: 56,
               AssetImage("assets/images/where to.png"),
@@ -64,7 +63,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Container(
@@ -102,7 +101,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 8),
             child: IconButton(
                 iconSize: 4,
                 padding: EdgeInsets.zero,

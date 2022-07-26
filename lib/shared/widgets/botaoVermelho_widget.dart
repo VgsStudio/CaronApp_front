@@ -15,17 +15,17 @@ class BotaoVermelhoWidget extends StatelessWidget {
       height: 40,
       child: ElevatedButton(
           onPressed: onPressed,
-          child: Text(
-            child,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
-          ),
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12))),
               elevation: MaterialStateProperty.all(0),
               backgroundColor:
-                  MaterialStateProperty.all(AppColors.vermelhoGrena))),
+                  MaterialStateProperty.all(AppColors.vermelhoGrena)),
+          child: Text(
+            child,
+            style: const TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+          )),
     );
   }
 }
