@@ -1,14 +1,11 @@
 import 'dart:convert';
 
-import 'package:caronapp_front/pages/login/widgets/custom_textfield_widget.dart';
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
-import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -38,7 +35,7 @@ class _MapaPageState extends State<MapaPage> {
     mapController = controller;
     LatLng position = LatLng(latMaua, longMaua);
     final Marker mauaMarker = Marker(
-        markerId: MarkerId("MAUÁ"),
+        markerId: const MarkerId("MAUÁ"),
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
         position: position,
         infoWindow: const InfoWindow(
@@ -54,10 +51,10 @@ class _MapaPageState extends State<MapaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(136),
+          preferredSize: const Size.fromHeight(136),
           child: AppBarMapWidget(
             onChanged: searchLocal,
-            booleano: trocarBooleano,
+            trocarBooleano: trocarBooleano,
             fullfield: _navigateTo,
             valor: index != -1 && !isOpcoesOpen
                 ? locais[index].title
@@ -74,7 +71,7 @@ class _MapaPageState extends State<MapaPage> {
                 polylines: {
                   if (polyLinePontis != null)
                     Polyline(
-                        polylineId: PolylineId("ID"),
+                        polylineId: const PolylineId("ID"),
                         color: AppColors.vermelhoGrena,
                         width: 5,
                         points: (polyLinePontis as List)
@@ -91,7 +88,7 @@ class _MapaPageState extends State<MapaPage> {
                     child: "Procurar motoristas",
                     onPressed: _mostrarMotoristas,
                   )
-                : SizedBox.shrink()
+                : const SizedBox.shrink()
           ],
         ));
   }
