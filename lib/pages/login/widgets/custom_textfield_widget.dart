@@ -6,8 +6,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final tamanhoTela;
   final String valor;
 
-  const CustomTextFieldWidget(
-      {Key? key, required this.tamanhoTela, required this.valor})
+  const CustomTextFieldWidget({Key? key, this.tamanhoTela, required this.valor})
       : super(key: key);
 
   @override

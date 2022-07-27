@@ -1,11 +1,11 @@
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class BotaoVermelho extends StatelessWidget {
+class BotaoVermelhoWidget extends StatelessWidget {
   final onPressed;
   final String child;
 
-  const BotaoVermelho({Key? key, this.onPressed, required this.child})
+  const BotaoVermelhoWidget({Key? key, this.onPressed, required this.child})
       : super(key: key);
 
   @override
