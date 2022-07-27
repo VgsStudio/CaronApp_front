@@ -12,7 +12,7 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-int timer = 750;
+int timer = 1000;
 
 class _SplashPageState extends State<SplashPage> {
   @override
@@ -39,32 +39,28 @@ class _SplashPageState extends State<SplashPage> {
         duration: Duration(milliseconds: timer),
         child: Container(
           decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 64),
-                        Image.asset(AppLogo.caronApp,
-                            filterQuality: FilterQuality.high, scale: 3),
-                        const SizedBox(height: 32),
-                        SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
-                      ],
-                    ),
-                  ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 64),
+                    Image.asset(AppLogo.caronApp,
+                        filterQuality: FilterQuality.high, scale: 3),
+                    SizedBox(height: 32),
+                    SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
+                  ],
                 ),
-                Image.asset(
-                  AppLogo.imt,
-                  filterQuality: FilterQuality.high,
-                  scale: 6,
-                ),
-                const SizedBox(height: 32),
-              ],
-            ),
+              ),
+              Image.asset(
+                AppLogo.imt,
+                filterQuality: FilterQuality.high,
+                scale: 6,
+              ),
+              SizedBox(height: 32),
+            ],
           ),
         ),
       ),

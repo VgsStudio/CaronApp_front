@@ -23,6 +23,7 @@ class LoginPage extends StatelessWidget {
 
     var tamanhoTela = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           gradient: AppColors.backgroundGradient,
@@ -34,8 +35,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                    child: Center(
-                        child: Column(
+                    child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
@@ -60,7 +60,8 @@ class LoginPage extends StatelessWidget {
                           style:
                               TextStyle(decoration: TextDecoration.underline),
                         )),
-                    const SizedBox(height: 40),
+
+                    const SizedBox(height: 24),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,
                       child: 'Login',
@@ -80,7 +81,7 @@ class LoginPage extends StatelessWidget {
                           ))
                     ])
                   ],
-                ))),
+                )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
