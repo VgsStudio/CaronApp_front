@@ -10,6 +10,9 @@
 .pub-cache/
 .pub/
 /build/
+/linux/flutter/
+/macos/flutter/
+/windows/flutter/
 
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
@@ -29,7 +32,3 @@ doc/api/
 
 *.env
 .env.dart
-
-/linux/flutter/
-/macos/flutter/
-/windows/flutter/
