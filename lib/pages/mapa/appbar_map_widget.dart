@@ -1,11 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../shared/themes/app_colors.dart';
 
 class AppBarMapWidget extends StatefulWidget {
   final String valor;
-  final booleano;
+  final trocarBooleano;
   final fullfield;
   final onChanged;
 
@@ -13,7 +14,7 @@ class AppBarMapWidget extends StatefulWidget {
     Key? key,
     required this.valor,
     required this.fullfield,
-    required this.booleano,
+    required this.trocarBooleano,
     required this.onChanged,
   }) : super(key: key);
 
@@ -33,7 +34,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
         children: [
           Container(
             width: 16,
-            padding: EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 8),
             child: ImageIcon(
               size: 56,
               AssetImage("assets/images/where to.png"),
@@ -53,7 +54,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 12),
+                    padding: EdgeInsets.only(left: 12),
                     child: Text(
                       "Instituto Mauá de Tecnologia",
                       style: TextStyle(
@@ -64,19 +65,18 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextFormField(
                   onChanged: widget.onChanged,
                   onTap: () {
-                    widget.booleano();
+                    widget.trocarBooleano();
                   },
-                  onFieldSubmitted: (val) {},
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     color: AppColors.cinzaClaro,
                   ),
@@ -102,7 +102,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 8),
             child: IconButton(
                 iconSize: 4,
                 padding: EdgeInsets.zero,

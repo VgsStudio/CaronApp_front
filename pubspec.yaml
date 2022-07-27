@@ -1,5 +1,5 @@
 name: caronapp_front
-description: A new Flutter project.
+description: O CaronApp é um aplicativo de carona idealizado pela equipe 9 do Hackathon do Dev. Community destinando para universitários.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -43,10 +43,8 @@ dependencies:
   google_maps_flutter: ^2.1.8
 
   # Launcher image
-  flutter_launcher_icons: ^0.9.3
 
   # DATA request
-  dio: ^4.0.6
   flutter_polyline_points: ^1.0.0
 
 dev_dependencies:
@@ -59,12 +57,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.9.3
 
 flutter_icons:
-  image_path: "assets/images/laucher.png"
+  image_path: "assets/icons/LauncherCaronAppLogo.png"
+  adaptive_icon_background: "assets/icons/LauncherCaronAppLogo_background.png"
+  adaptive_icon_foreground: "assets/icons/LauncherCaronAppLogo_foreground.png"
   android: true
   ios: true
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -77,6 +77,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -8,7 +8,7 @@ class OpcoesWidget extends StatefulWidget {
   final choose;
   final locais;
 
-  OpcoesWidget(
+  const OpcoesWidget(
       {Key? key,
       required this.isOpcoesOpen,
       required this.choose,
@@ -42,14 +42,14 @@ class _OpcoesWidgetState extends State<OpcoesWidget> {
                         Container(
                           padding: const EdgeInsets.symmetric(
                               vertical: 8, horizontal: 8),
-                          child: Icon(
+                          child: const Icon(
                             Icons.map_sharp,
                             color: AppColors.brancosSub,
                           ),
                         ),
                         Text(
                           widget.locais[index].title,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: AppColors.brancosSub,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),

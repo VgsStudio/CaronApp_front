@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
               pageBuilder: (c, a1, a2) => HomePage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
-              transitionDuration: Duration(milliseconds: 500)));
+              transitionDuration: const Duration(milliseconds: 500)));
     }
 
     var tamanhoTela = MediaQuery.of(context).size;
@@ -60,6 +60,7 @@ class LoginPage extends StatelessWidget {
                           style:
                               TextStyle(decoration: TextDecoration.underline),
                         )),
+
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../mapa/mapa_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Bem Vinde ao CaronApp",
                 style: TextStyle(fontSize: 16),
               ),

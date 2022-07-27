@@ -1,4 +1,3 @@
-import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class _SplashPageState extends State<SplashPage> {
     Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-            pageBuilder: (c, a1, a2) => LoginPage(),
+            pageBuilder: (c, a1, a2) => const LoginPage(),
             transitionsBuilder: (c, anim, a2, child) =>
                 FadeTransition(opacity: anim, child: child),
             transitionDuration: Duration(milliseconds: timer)));
