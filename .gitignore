@@ -29,3 +29,7 @@ doc/api/
 
 *.env
 .env.dart
+
+/linux/flutter/
+/macos/flutter/
+/windows/flutter/
