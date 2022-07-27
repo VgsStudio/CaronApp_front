@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 class BotaoVermelhoWidget extends StatelessWidget {
   final onPressed;
   final String child;
+  final double? width;
 
-  const BotaoVermelhoWidget({Key? key, this.onPressed, required this.child})
+  const BotaoVermelhoWidget(
+      {Key? key, this.onPressed, required this.child, this.width = 176})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 176,
+      width: width, // se Width for igual a null, o botão não possui constraints
       height: 40,
       child: ElevatedButton(
           onPressed: onPressed,
