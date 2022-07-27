@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => const HomePage(),
+              pageBuilder: (c, a1, a2) => HomePage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
