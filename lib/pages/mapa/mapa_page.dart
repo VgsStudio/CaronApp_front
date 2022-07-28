@@ -17,6 +17,7 @@ class MapaPage extends StatefulWidget {
 }
 
 class _MapaPageState extends State<MapaPage> {
+  var controllerSearchField = TextEditingController();
   late var locais = locaisList;
   String query = '';
 
@@ -50,15 +51,15 @@ class _MapaPageState extends State<MapaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(136),
           child: AppBarMapWidget(
+            controller: controllerSearchField,
             onChanged: searchLocal,
             trocarBooleano: trocarBooleano,
             fullfield: _navigateTo,
-            valor: index != -1 && !isOpcoesOpen
-                ? locais[index].title
-                : 'Para onde deseja ir?',
+            valor: 'Para onde deseja ir?',
           ),
         ),
         body: Stack(
@@ -83,10 +84,15 @@ class _MapaPageState extends State<MapaPage> {
               isOpcoesOpen: isOpcoesOpen,
               choose: _navigateTo,
             ),
-            index != -1
-                ? BotaoVermelhoWidget(
-                    child: "Procurar motoristas",
-                    onPressed: _mostrarMotoristas,
+            index != -1 && !isOpcoesOpen
+                ? Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: const EdgeInsets.only(bottom: 32),
+                    child: BotaoVermelhoWidget(
+                      width: null,
+                      child: "Procurar motoristas",
+                      onPressed: _mostrarMotoristas,
+                    ),
                   )
                 : const SizedBox.shrink()
           ],
@@ -106,6 +112,7 @@ class _MapaPageState extends State<MapaPage> {
     });
 
     var local = locais[index];
+    controllerSearchField.text = local.title;
 
     double lat = local.lat;
     double long = local.long;
