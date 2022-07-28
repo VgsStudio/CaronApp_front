@@ -6,9 +6,15 @@ import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:flutter/material.dart';
 
-class CadastroPage extends StatelessWidget {
+class CadastroPage extends StatefulWidget {
   const CadastroPage({Key? key}) : super(key: key);
 
+  @override
+  State<CadastroPage> createState() => _CadastroPageState();
+}
+
+class _CadastroPageState extends State<CadastroPage> {
+  bool nomeSocial = false;
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
@@ -32,6 +38,7 @@ class CadastroPage extends StatelessWidget {
     }
 
     var tamanhoTela = MediaQuery.of(context).size;
+
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -80,6 +87,40 @@ class CadastroPage extends StatelessWidget {
                     CadastroTextFieldWidget(
                         widthMult: 0.55, valor: "Sobrenome"),
                   ],
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 12),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text("Nome Social",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Checkbox(
+                        activeColor: AppColors.vermelhoGrena,
+                        checkColor: AppColors.brancosSub,
+                        value: nomeSocial,
+                        onChanged: (bool? checked) {
+                          setState(() {
+                            nomeSocial = !nomeSocial;
+                          });
+                          ;
+                        },
+                      ),
+                      SizedBox(
+                        width: 18,
+                      ),
+                      Visibility(
+                          visible: nomeSocial,
+                          child: CadastroTextFieldWidget(
+                            valor: "Nome Social",
+                            widthMult: 0.6,
+                            margin: 0,
+                          ))
+                    ],
+                  ),
                 ),
                 //TODO: nome social (Checkbox e TextField)
                 const CadastroTextFieldWidget(widthMult: 0.9, valor: "E-mail"),
