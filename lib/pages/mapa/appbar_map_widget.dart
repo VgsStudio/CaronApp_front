@@ -6,9 +6,10 @@ import '../../shared/themes/app_colors.dart';
 
 class AppBarMapWidget extends StatefulWidget {
   final String valor;
-  final trocarBooleano;
-  final fullfield;
-  final onChanged;
+  final Function trocarBooleano;
+  final Function fullfield;
+  final void Function(String) onChanged;
+  final controller;
 
   const AppBarMapWidget({
     Key? key,
@@ -16,6 +17,7 @@ class AppBarMapWidget extends StatefulWidget {
     required this.fullfield,
     required this.trocarBooleano,
     required this.onChanged,
+    this.controller = TextEditingController,
   }) : super(key: key);
 
   @override
@@ -51,7 +53,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                   color: AppColors.preto,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Align(
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: EdgeInsets.only(left: 12),
@@ -72,6 +74,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextFormField(
+                  controller: widget.controller,
                   onChanged: widget.onChanged,
                   onTap: () {
                     widget.trocarBooleano();
