@@ -1,4 +1,6 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
+import 'package:caronapp_front/pages/login/cadastro/cadastro_page.dart';
+import 'package:caronapp_front/pages/login/resetsenha/resetsenha_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,26 @@ class LoginPage extends StatelessWidget {
           context,
           PageRouteBuilder(
               pageBuilder: (c, a1, a2) => HomePage(),
+              transitionsBuilder: (c, anim, a2, child) =>
+                  FadeTransition(opacity: anim, child: child),
+              transitionDuration: const Duration(milliseconds: 500)));
+    }
+
+    navigateToResetSenha() async {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => ResetSenhaPage(),
+              transitionsBuilder: (c, anim, a2, child) =>
+                  FadeTransition(opacity: anim, child: child),
+              transitionDuration: const Duration(milliseconds: 500)));
+    }
+
+    navigateToCadastro() async {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => CadastroPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -48,9 +70,12 @@ class LoginPage extends StatelessWidget {
                         tamanhoTela: tamanhoTela, valor: "RA"),
                     const SizedBox(height: 24),
                     CustomTextFieldWidget(
-                        tamanhoTela: tamanhoTela, valor: "Senha"),
+                      tamanhoTela: tamanhoTela,
+                      valor: "Senha",
+                      isObscure: true,
+                    ),
                     TextButton(
-                        onPressed: navigateToHome,
+                        onPressed: navigateToResetSenha,
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent),
@@ -60,7 +85,6 @@ class LoginPage extends StatelessWidget {
                           style:
                               TextStyle(decoration: TextDecoration.underline),
                         )),
-
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,
@@ -69,7 +93,7 @@ class LoginPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       const Text("Não é cadastrado?"),
                       TextButton(
-                          onPressed: navigateToHome,
+                          onPressed: navigateToCadastro,
                           style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.transparent),
