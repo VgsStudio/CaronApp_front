@@ -1,4 +1,3 @@
-import 'package:caronapp_front/pages/login/cadastro/cadastro_page.dart';
 import 'package:caronapp_front/pages/login/splash/splash_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
             primary: AppColors.vermelhoGrena,
             surface: AppColors.cinzaBackground,
           )),
-      home: const CadastroPage(),
+      home: const SplashPage(),
     );
   }
 }
