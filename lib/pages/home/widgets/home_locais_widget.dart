@@ -3,14 +3,23 @@ import 'package:flutter/material.dart';
 
 class HomeLocaisWidget extends StatelessWidget {
   final local;
+  final Function choosePlace;
+  final int index;
 
-  const HomeLocaisWidget({Key? key, required this.local}) : super(key: key);
+  const HomeLocaisWidget(
+      {Key? key,
+      required this.local,
+      required this.choosePlace,
+      required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var tamanhoTela = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        choosePlace(index);
+      },
       child: SizedBox(
         width: tamanhoTela.width * 0.8,
         child: Column(
@@ -19,8 +28,8 @@ class HomeLocaisWidget extends StatelessWidget {
               children: [
                 Container(
                   // Icone
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.only(right: 8),
                   decoration: BoxDecoration(
                       color: AppColors.cinzaEscuro,
                       borderRadius: BorderRadius.circular(16)),
@@ -47,12 +56,12 @@ class HomeLocaisWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(), // Espaço
-                SizedBox(
+                const Spacer(), // Espaço
+                const SizedBox(
                     child: Icon(Icons.keyboard_arrow_right_sharp)) // Setiha
               ],
             ),
-            Divider(
+            const Divider(
               thickness: 3,
             ),
           ],

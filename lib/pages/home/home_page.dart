@@ -16,11 +16,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  _navigateToMapa() {
+  _navigateToMapa([op]) {
     Navigator.push(
         context,
         PageRouteBuilder(
-          pageBuilder: (c, a1, a2) => MapaPage(),
+          pageBuilder: (c, a1, a2) => MapaPage(
+            buttonOption: op,
+          ),
         ));
   }
 
@@ -141,7 +143,11 @@ class _HomePageState extends State<HomePage> {
             Column(
                 children: List.generate(
                     locaisList.length < 4 ? locaisList.length : 4,
-                    (index) => HomeLocaisWidget(local: locaisList[index]))),
+                    (index) => HomeLocaisWidget(
+                          local: locaisList[index],
+                          choosePlace: _choosePlace,
+                          index: index,
+                        ))),
             Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -160,5 +166,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _choosePlace(op) {
+    _navigateToMapa(op);
   }
 }
