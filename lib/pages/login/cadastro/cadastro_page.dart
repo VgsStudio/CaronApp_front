@@ -14,7 +14,26 @@ class CadastroPage extends StatefulWidget {
 }
 
 class _CadastroPageState extends State<CadastroPage> {
+  List<String> cursos = [
+    'Administração',
+    'Ciência da Computação',
+    'Design',
+    'Engenharia Civil',
+    'Engenharia de Alimentos',
+    'Engenharia de Computação',
+    'Engenharia de Controle e Automação',
+    'Engenharia de Produção',
+    'Engenharia Elétrica',
+    'Engenharia Eletrônica',
+    'Engenharia Mecânica',
+    'Engenharia Química',
+    'Sistemas de Informação'
+  ];
+  List<String> anos = ['1°', '2°', '3°', '4°', '5°'];
+  String? selectedAno = '1°';
+  String? selectedCurso = 'Administração';
   bool nomeSocial = false;
+  DateTime date = DateTime(2022, 07, 28);
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
@@ -122,20 +141,92 @@ class _CadastroPageState extends State<CadastroPage> {
                     ],
                   ),
                 ),
-                //TODO: nome social (Checkbox e TextField)
                 const CadastroTextFieldWidget(widthMult: 0.9, valor: "E-mail"),
                 const CadastroTextFieldWidget(
                     widthMult: 0.9, valor: "Telefone"),
                 const CadastroTextFieldWidget(widthMult: 0.9, valor: "RA"),
                 const CadastroTextFieldWidget(widthMult: 0.9, valor: "Senha"),
-                const CadastroTextFieldWidget(
-                    widthMult: 0.5, valor: "Data de Nascimento"),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    children: [
+                      Text("Data de nascimento",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  AppColors.cinzaEscuro)),
+                          onPressed: () async {
+                            showDatePicker(
+                                context: context,
+                                initialDate: date,
+                                firstDate: DateTime(1990, 01, 01),
+                                lastDate: DateTime(2022, 12, 31));
+                          },
+                          child: Icon(
+                            Icons.calendar_today,
+                            color: AppColors.cinzaClaro,
+                          )),
+                    ],
+                  ),
+                ),
+                Row(children: [
+                  //TODO: DropdownButton
+                  Text('Curso',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  DropdownButton(
+                      menuMaxHeight: 150,
+                      value: selectedCurso,
+                      items:
+                          cursos.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedCurso = newValue!;
+                        });
+                      })
+                ]),
+
                 Row(
-                  children: const [
-                    CadastroTextFieldWidget(widthMult: 0.6, valor: "Curso"),
-                    //TODO: DropdownButton
-                    SizedBox(width: 24),
-                    CadastroTextFieldWidget(widthMult: 0.2, valor: "Série"),
+                  children: [
+                    Text('Ano',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    DropdownButton(
+                        menuMaxHeight: 150,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColors.brancosSub,
+                            fontWeight: FontWeight.bold),
+                        value: selectedAno,
+                        items:
+                            anos.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedAno = newValue!;
+                          });
+                        }),
                   ],
                 ),
                 const CadastroTextFieldWidget(widthMult: 0.4, valor: "Gênero"),
