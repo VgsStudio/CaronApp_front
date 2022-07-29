@@ -93,9 +93,7 @@ class _CadastroPageState extends State<CadastroPage> {
               const BoxDecoration(gradient: AppColors.backgroundGradient),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 const SizedBox(height: 64),
                 Row(
