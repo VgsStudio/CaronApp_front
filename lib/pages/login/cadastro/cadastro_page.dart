@@ -30,8 +30,10 @@ class _CadastroPageState extends State<CadastroPage> {
     'Sistemas de Informação'
   ];
   List<String> anos = ['1°', '2°', '3°', '4°', '5°'];
-  String? selectedAno = '1°';
-  String? selectedCurso = 'Administração';
+  List<String> generos = ['Masculino', 'Feminino', 'Não-binário', 'Outro'];
+  String? selectedGenero = null;
+  String? selectedAno = null;
+  String? selectedCurso = null;
   bool nomeSocial = false;
   DateTime date = DateTime(2022, 07, 28);
   @override
@@ -99,53 +101,90 @@ class _CadastroPageState extends State<CadastroPage> {
                 Row(
                   children: const [
                     CadastroTextFieldWidget(
-                        widthMult: 0.3, valor: "Primeiro nome"),
+                        widthMult: 0.3,
+                        valor: "Nome",
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: AppColors.cinzaClaro,
+                        )),
                     SizedBox(
                       width: 24,
                     ),
                     CadastroTextFieldWidget(
-                        widthMult: 0.55, valor: "Sobrenome"),
+                        widthMult: 0.55,
+                        valor: "Sobrenome",
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: AppColors.cinzaClaro,
+                        )),
                   ],
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 12),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text("Nome Social",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      Checkbox(
-                        activeColor: AppColors.vermelhoGrena,
-                        checkColor: AppColors.brancosSub,
-                        value: nomeSocial,
-                        onChanged: (bool? checked) {
-                          setState(() {
-                            nomeSocial = !nomeSocial;
-                          });
-                          ;
-                        },
-                      ),
-                      SizedBox(
-                        width: 18,
-                      ),
-                      Visibility(
-                          visible: nomeSocial,
-                          child: CadastroTextFieldWidget(
-                            valor: "Nome Social",
-                            widthMult: 0.6,
-                            margin: 0,
-                          ))
-                    ],
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text("Nome Social",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Checkbox(
+                      activeColor: AppColors.vermelhoGrena,
+                      checkColor: AppColors.brancosSub,
+                      value: nomeSocial,
+                      onChanged: (bool? checked) {
+                        setState(() {
+                          nomeSocial = !nomeSocial;
+                        });
+                        ;
+                      },
+                    ),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    CadastroTextFieldWidget(
+                      isEnabled: nomeSocial,
+                      valor: "Nome Social",
+                      widthMult: 0.5,
+                      margin: 0,
+                      prefixIcon: Icon(Icons.person),
+                    )
+                  ],
+                ),
+                const CadastroTextFieldWidget(
+                  widthMult: 0.9,
+                  valor: "E-mail",
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
+                    color: AppColors.cinzaClaro,
                   ),
                 ),
-                const CadastroTextFieldWidget(widthMult: 0.9, valor: "E-mail"),
                 const CadastroTextFieldWidget(
-                    widthMult: 0.9, valor: "Telefone"),
-                const CadastroTextFieldWidget(widthMult: 0.9, valor: "RA"),
-                const CadastroTextFieldWidget(widthMult: 0.9, valor: "Senha"),
+                  widthMult: 0.9,
+                  valor: "Telefone",
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: AppColors.cinzaClaro,
+                  ),
+                ),
+                const CadastroTextFieldWidget(
+                  widthMult: 0.9,
+                  valor: "RA",
+                  prefixIcon: Icon(
+                    Icons.school_sharp,
+                    color: AppColors.cinzaClaro,
+                  ),
+                ),
+                const CadastroTextFieldWidget(
+                    widthMult: 0.9,
+                    valor: "Senha",
+                    isObscure: true,
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: AppColors.cinzaClaro,
+                    )),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -158,33 +197,60 @@ class _CadastroPageState extends State<CadastroPage> {
                         width: 10,
                       ),
                       ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.cinzaEscuro)),
-                          onPressed: () async {
-                            showDatePicker(
-                                context: context,
-                                initialDate: date,
-                                firstDate: DateTime(1990, 01, 01),
-                                lastDate: DateTime(2022, 12, 31));
-                          },
-                          child: Icon(
-                            Icons.calendar_today,
-                            color: AppColors.cinzaClaro,
-                          )),
+                        style: ButtonStyle(
+                            padding: MaterialStateProperty.all<EdgeInsets>(
+                                EdgeInsets.all(12)),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.cinzaEscuro)),
+                        onPressed: () async {
+                          DateTime? newDate = await showDatePicker(
+                            context: context,
+                            initialDate: date,
+                            firstDate: DateTime(1990, 01, 01),
+                            lastDate: DateTime(2022, 12, 31),
+                          );
+                          if (newDate == null) return;
+                          setState(() {
+                            date = newDate;
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today,
+                              color: AppColors.cinzaClaro,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '${date.day}/${date.month}/${date.year}',
+                              style: TextStyle(
+                                color: AppColors.cinzaClaro,
+                                fontSize: 16,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
                     ],
                   ),
                 ),
                 Row(children: [
-                  //TODO: DropdownButton
                   Text('Curso',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      )),
                   SizedBox(
-                    width: 10,
+                    width: 20,
                   ),
                   DropdownButton(
                       menuMaxHeight: 150,
+                      hint: Text('Selecione seu curso'),
                       value: selectedCurso,
                       items:
                           cursos.map<DropdownMenuItem<String>>((String value) {
@@ -206,14 +272,11 @@ class _CadastroPageState extends State<CadastroPage> {
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     SizedBox(
-                      width: 20,
+                      width: 35,
                     ),
                     DropdownButton(
                         menuMaxHeight: 150,
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.brancosSub,
-                            fontWeight: FontWeight.bold),
+                        hint: Text('Selecione o ano'),
                         value: selectedAno,
                         items:
                             anos.map<DropdownMenuItem<String>>((String value) {
@@ -229,7 +292,32 @@ class _CadastroPageState extends State<CadastroPage> {
                         }),
                   ],
                 ),
-                const CadastroTextFieldWidget(widthMult: 0.4, valor: "Gênero"),
+                Row(
+                  children: [
+                    Text('Gênero',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    DropdownButton(
+                        menuMaxHeight: 150,
+                        hint: Text('Selecione seu gênero'),
+                        value: selectedGenero,
+                        items: generos
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedGenero = newValue!;
+                          });
+                        }),
+                  ],
+                ),
                 //TODO: termos (TextField, Text e TextButton)
                 const SizedBox(
                   height: 30,

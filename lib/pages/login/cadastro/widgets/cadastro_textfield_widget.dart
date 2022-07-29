@@ -5,12 +5,21 @@ class CadastroTextFieldWidget extends StatelessWidget {
   final double widthMult;
   final String valor;
   final double margin;
+  final Icon prefixIcon;
+  final bool isEnabled;
+  final bool isObscure;
 
   const CadastroTextFieldWidget(
       {Key? key,
       required this.valor,
       required this.widthMult,
-      this.margin = 12})
+      this.margin = 12,
+      this.prefixIcon = const Icon(
+        Icons.error,
+        color: AppColors.cinzaClaro,
+      ),
+      this.isEnabled = true,
+      this.isObscure = false})
       : super(key: key);
 
   @override
@@ -25,9 +34,12 @@ class CadastroTextFieldWidget extends StatelessWidget {
             width: tamanhoTela.width * widthMult,
             height: 40,
             child: TextField(
+              enabled: isEnabled,
               onEditingComplete: () => FocusScope.of(context).nextFocus(),
+              obscureText: isObscure,
               style: const TextStyle(fontSize: 16),
               decoration: InputDecoration(
+                  prefixIcon: prefixIcon,
                   contentPadding: const EdgeInsets.only(left: 12),
                   hintText: valor,
                   border: OutlineInputBorder(
@@ -38,7 +50,9 @@ class CadastroTextFieldWidget extends StatelessWidget {
                     ),
                   ),
                   filled: true,
-                  fillColor: AppColors.cinzaEscuro),
+                  fillColor: isEnabled
+                      ? AppColors.cinzaEscuro
+                      : AppColors.cinzaBackground),
             ),
           ),
         ],
