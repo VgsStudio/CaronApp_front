@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../shared/logo/app_logos.dart';
 import '../mapa/mapa_page.dart';
+import 'widgets/drawer_home_page_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -67,10 +68,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      drawer: Drawer(
-        child: Text("Vitor"),
-        backgroundColor: Colors.red,
-      ),
+      drawer: DrawerHomePageWidget(),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 48),
@@ -177,3 +175,5 @@ class _HomePageState extends State<HomePage> {
     _navigateToMapa(op);
   }
 }
+
+
