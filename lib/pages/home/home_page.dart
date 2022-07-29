@@ -1,8 +1,9 @@
+import 'package:caronapp_front/pages/home/widgets/button_home_screen_widget.dart';
 import 'package:caronapp_front/pages/home/widgets/home_locais_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../shared/logo/app_logos.dart';
 import '../mapa/mapa_page.dart';
@@ -23,13 +24,41 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
+  late GoogleMapController mapController;
+  Set<Marker> markers = Set<Marker>();
+  bool isOpcoesOpen = false;
+  int index = -1;
+
+  // DADOS MOCKADOS NESSA STRING
+
+  double latMaua = -23.6478784;
+  double longMaua = -46.5742805;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    LatLng position = LatLng(latMaua, longMaua);
+    final Marker mauaMarker = Marker(
+        markerId: const MarkerId("MAUÁ"),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+        position: position,
+        infoWindow: const InfoWindow(
+            title: "Instituto Mauá de Tecnologia",
+            snippet: "São Caetano do Sul/Brasil"));
+
+    setState(() {
+      markers.add(mauaMarker);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var tamanhoTela = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         iconTheme: IconThemeData(
+          size: 32,
           color: AppColors.vermelhoGrena,
         ),
         backgroundColor: Colors.transparent,
@@ -41,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 48),
+        padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 48),
         decoration: const BoxDecoration(color: AppColors.pretoSub),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -53,90 +82,81 @@ class _HomePageState extends State<HomePage> {
               filterQuality: FilterQuality.high,
               scale: 5,
             ),
-            Container(
-              // Mapa
-              width: tamanhoTela.width * 0.8,
-              height: tamanhoTela.width * 0.45,
-              margin: const EdgeInsets.symmetric(vertical: 16),
-              decoration: BoxDecoration(
-                  color: Colors.red, borderRadius: BorderRadius.circular(16)),
-            ),
-            SizedBox(
-              width: tamanhoTela.width * 0.8,
-              child: TextFormField(
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: AppColors.cinzaClaro,
+            Stack(
+              children: [
+                Container(
+                  // Mapa
+                  clipBehavior: Clip.hardEdge,
+                  width: tamanhoTela.width * 0.8,
+                  height: tamanhoTela.height * 0.2,
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                      color: AppColors.cinzaEscuro,
+                      borderRadius: BorderRadius.circular(16)),
+                  child: GoogleMap(
+                    markers: markers,
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                        target: LatLng(latMaua, longMaua), zoom: 15),
+                  ),
                 ),
-                decoration: InputDecoration(
-                    suffixIcon: Icon(Icons.access_time),
-                    contentPadding: const EdgeInsets.only(left: 8),
-                    hintText: "Para onde deseja ir?",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                    ),
-                    filled: true,
-                    fillColor: AppColors.cinzaEscuro),
-              ),
+                GestureDetector(
+                  onTap: _navigateToMapa,
+                  child: Container(
+                    width: tamanhoTela.width * 0.8,
+                    height: tamanhoTela.height * 0.2,
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(16)),
+                  ),
+                )
+              ],
             ),
-            SizedBox(
-              height: 16,
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              child: SizedBox(
+                width: tamanhoTela.width * 0.8,
+                child: TextFormField(
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: AppColors.cinzaClaro,
+                  ),
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.access_time),
+                      contentPadding: const EdgeInsets.only(left: 8),
+                      hintText: "Para onde deseja ir?",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: AppColors.cinzaEscuro),
+                ),
+              ),
             ),
             Column(
                 children: List.generate(
                     locaisList.length < 4 ? locaisList.length : 4,
                     (index) => HomeLocaisWidget(local: locaisList[index]))),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                BottomHomeScreenWidget(icone: Icons.reply, onTap: () {}),
-                BottomHomeScreenWidget(
+                ButtomHomeScreenWidget(
+                    text: "Agendados", icone: Icons.reply, onTap: () {}),
+                ButtomHomeScreenWidget(
+                  text: "Recentes",
                   icone: Icons.calendar_today,
                   onTap: () {},
                 ),
               ],
             )
-            // const Text(
-            //   "Bem Vinde ao CaronApp",
-            //   style: TextStyle(fontSize: 16),
-            // ),
-            // BotaoVermelhoWidget(child: "Mapa", onPressed: _navigateToMapa)
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class BottomHomeScreenWidget extends StatelessWidget {
-  final icone;
-  final onTap;
-
-  const BottomHomeScreenWidget({
-    Key? key,
-    required this.icone,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-        width: 120,
-        height: 64,
-        decoration: BoxDecoration(
-            color: AppColors.cinzaEscuro,
-            borderRadius: BorderRadius.circular(16)),
-        child: Icon(
-          icone,
-          size: 40,
         ),
       ),
     );
