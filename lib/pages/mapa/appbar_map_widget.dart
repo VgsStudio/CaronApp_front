@@ -10,6 +10,7 @@ class AppBarMapWidget extends StatefulWidget {
   final Function fullfield;
   final void Function(String) onChanged;
   final controller;
+  final focusNode;
 
   const AppBarMapWidget({
     Key? key,
@@ -18,6 +19,7 @@ class AppBarMapWidget extends StatefulWidget {
     required this.trocarBooleano,
     required this.onChanged,
     this.controller = TextEditingController,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -80,6 +82,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                     }
                   },
                   child: TextFormField(
+                    focusNode: widget.focusNode,
                     controller: widget.controller,
                     onChanged: widget.onChanged,
                     style: const TextStyle(

@@ -9,14 +9,33 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapaPage extends StatefulWidget {
   final int? buttonOption;
+  final bool? focarNoTextForm;
 
-  MapaPage({Key? key, this.buttonOption = -1}) : super(key: key);
+  MapaPage({Key? key, this.buttonOption = -1, this.focarNoTextForm = false})
+      : super(key: key);
 
   @override
   State<MapaPage> createState() => _MapaPageState();
 }
 
 class _MapaPageState extends State<MapaPage> {
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.focarNoTextForm != null) {
+      focusNode.requestFocus();
+    }
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+
+    super.dispose();
+  }
+
   var controllerSearchField = TextEditingController();
   late var locais = locaisList;
   String query = '';
@@ -59,6 +78,7 @@ class _MapaPageState extends State<MapaPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(136),
           child: AppBarMapWidget(
+            focusNode: focusNode,
             controller: controllerSearchField,
             onChanged: searchLocal,
             trocarBooleano: trocarBooleano,

@@ -16,11 +16,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  _navigateToMapa([op]) {
+  _navigateToMapa([int? op, bool? focarNoTextForm]) {
     Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (c, a1, a2) => MapaPage(
+            focarNoTextForm: focarNoTextForm,
             buttonOption: op,
           ),
         ));
@@ -120,6 +121,10 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 width: tamanhoTela.width * 0.8,
                 child: TextFormField(
+                  readOnly: true,
+                  onTap: () {
+                    _navigateToMapa(null, true);
+                  },
                   style: const TextStyle(
                     fontSize: 20,
                     color: AppColors.cinzaClaro,
