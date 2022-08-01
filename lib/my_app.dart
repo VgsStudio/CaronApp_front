@@ -1,4 +1,5 @@
 import 'package:caronapp_front/pages/login/splash/splash_page.dart';
+import 'package:caronapp_front/pages/profile/driver_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
             primary: AppColors.vermelhoGrena,
             surface: AppColors.cinzaBackground,
           )),
-      home: const SplashPage(),
+      home: DriverProfilePage(), //botar o splash
     );
   }
 }

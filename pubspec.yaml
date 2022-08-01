@@ -46,6 +46,9 @@ dependencies:
 
   # DATA request
   flutter_polyline_points: ^1.0.0
+  multiavatar: ^0.1.5
+  flutter_svg: ^1.1.1+1
+  username_gen: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -78,7 +81,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

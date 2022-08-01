@@ -60,7 +60,6 @@ class LoginPage extends StatelessWidget {
                           style:
                               TextStyle(decoration: TextDecoration.underline),
                         )),
-
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,
