@@ -1,6 +1,6 @@
 import 'dart:math';
-import 'package:caronapp_front/pages/profile/driver_profile_page.dart';
-import 'package:caronapp_front/pages/profile/support_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

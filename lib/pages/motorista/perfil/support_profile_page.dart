@@ -1,11 +1,13 @@
 import 'dart:math';
-
-import 'package:caronapp_front/pages/profile/driver_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
+import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
 import 'package:username_gen/username_gen.dart';
+
+import 'widget/support_opcao_widget.dart';
 
 class SupportProfilePage extends StatelessWidget {
   SupportProfilePage({Key? key}) : super(key: key);
@@ -137,72 +139,37 @@ class SupportProfilePage extends StatelessWidget {
           ),
           const Text('O que deseja reportar sobre o mostorista?',
               textAlign: TextAlign.center, textScaleFactor: 1.5),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.9,
-            height: MediaQuery.of(context).size.height / 30,
-            decoration: BoxDecoration(
-                color: AppColors.cinzaClaro,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: AppColors.brancosSub)),
-            child: const Text('Ocorreu um roubo durante a carona',
-                textAlign: TextAlign.center, textScaleFactor: 1.2),
+          SupportOpcaoWidget(
+            onTap: () {},
+            texto: 'Ocorreu um roubo durante a carona',
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.9,
-            height: MediaQuery.of(context).size.height / 30,
-            decoration: BoxDecoration(
-                color: AppColors.cinzaClaro,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: AppColors.brancosSub)),
-            child: const Text('Ocorreu um acidente durante a carona',
-                textAlign: TextAlign.center, textScaleFactor: 1.2),
+          SupportOpcaoWidget(
+            onTap: () {},
+            texto: 'Ocorreu um acidente durante a carona',
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.9,
-            height: MediaQuery.of(context).size.height / 30,
-            decoration: BoxDecoration(
-                color: AppColors.cinzaClaro,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: AppColors.brancosSub)),
-            child: const Text('Ocorreu uma descriminação/injúria',
-                textAlign: TextAlign.center, textScaleFactor: 1.2),
+          SupportOpcaoWidget(
+            onTap: () {},
+            texto: 'Ocorreu uma discriminação/injúria',
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.9,
-            height: MediaQuery.of(context).size.height / 30,
-            decoration: BoxDecoration(
-                color: AppColors.cinzaClaro,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: AppColors.brancosSub)),
-            child: const Text('Foto/Nome não condiz com motôrista',
-                textAlign: TextAlign.center, textScaleFactor: 1.2),
+          SupportOpcaoWidget(
+            onTap: () {},
+            texto: 'Foto/Nome não condiz com o motôrista',
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.9,
-            height: MediaQuery.of(context).size.height / 30,
-            decoration: BoxDecoration(
-                color: AppColors.cinzaClaro,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: AppColors.brancosSub)),
-            child: const Text('Reportar outro problema',
-                textAlign: TextAlign.center, textScaleFactor: 1.2),
+          SupportOpcaoWidget(
+            onTap: () {},
+            texto: 'Reportar outro problema',
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
-                '../assets/images/LogoIMT.png',
+                AppLogo.imt,
                 height: MediaQuery.of(context).size.height / 5,
                 width: MediaQuery.of(context).size.width / 5,
               ),
               Image.asset(
-                '../assets/images/LogoDev.png',
+                AppLogo.caronApp,
                 height: MediaQuery.of(context).size.height / 5,
                 width: MediaQuery.of(context).size.width / 5,
               )

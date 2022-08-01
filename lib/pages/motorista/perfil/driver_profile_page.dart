@@ -1,6 +1,6 @@
 import 'package:caronapp_front/pages/mapa/mapa_page.dart';
-import 'package:caronapp_front/pages/profile/chat_profile_page.dart';
-import 'package:caronapp_front/pages/profile/support_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/chat_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/support_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:multiavatar/multiavatar.dart';
@@ -41,8 +41,7 @@ class DriverProfilePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => ChatProfilePage()),
+                      MaterialPageRoute(builder: (context) => MapaPage()),
                     );
                   },
                   icon: const CircleAvatar(
