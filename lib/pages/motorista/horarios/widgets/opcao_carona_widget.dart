@@ -1,11 +1,9 @@
-import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
+import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
-
-import '../../../../shared/themes/app_colors.dart';
 
 class OpcaoCaronaWidget extends StatelessWidget {
   final DateTime horario;
@@ -50,7 +48,8 @@ class OpcaoCaronaWidget extends StatelessWidget {
                   color: AppColors.vermelhoGrena,
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: Text("${horario.hour}:${horario.minute}",
+                child: Text(
+                    "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
                     style: TextStyle(fontSize: 20)),
               ),
             ],
@@ -97,7 +96,10 @@ class OpcaoCaronaWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DriverProfilePage()),
+                MaterialPageRoute(
+                    builder: (context) => DriverProfilePage(
+                          motorista: motorista,
+                        )),
               );
             },
             child: Row(
@@ -138,7 +140,7 @@ class OpcaoCaronaWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Nota: ${motorista.rate}',
+                          'Nota: ${motorista.rate.toStringAsFixed(2)}',
                         ),
                         const SizedBox(
                           width: 4,

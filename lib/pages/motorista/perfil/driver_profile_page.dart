@@ -1,19 +1,17 @@
 import 'package:caronapp_front/pages/mapa/mapa_page.dart';
+import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/chat_profile_page.dart';
 import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:multiavatar/multiavatar.dart';
-import 'package:username_gen/username_gen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:math';
 
 class DriverProfilePage extends StatelessWidget {
+  final Motorista motorista;
   static final _random = Random();
-  static final _nota = _random.nextInt(5) + 1;
-  static final _idade = _random.nextInt(23) + 18;
-  final username = UsernameGen().generate();
   static final _viagens = _random.nextInt(100) + 20;
   static var listaimagens = [
     '../assets/images/PlacasCarros/Placa1.png',
@@ -22,7 +20,7 @@ class DriverProfilePage extends StatelessWidget {
   ];
   var imagemrnd = listaimagens[_random.nextInt(listaimagens.length)];
 
-  DriverProfilePage({Key? key}) : super(key: key);
+  DriverProfilePage({Key? key, required this.motorista}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,7 @@ class DriverProfilePage extends StatelessWidget {
                   child: SvgPicture.string(
                       height: 100,
                       width: 100,
-                      multiavatar(username, trBackground: true))),
+                      multiavatar(motorista.foto, trBackground: true))),
               const Padding(padding: EdgeInsets.only(left: 20)),
               Column(
                 children: [
@@ -72,7 +70,7 @@ class DriverProfilePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Nota: $_nota',
+                        'Nota: ${motorista.rate.toStringAsFixed(2)}',
                         textScaleFactor: 1.5,
                       ),
                       const Padding(
@@ -86,7 +84,7 @@ class DriverProfilePage extends StatelessWidget {
                         padding: EdgeInsets.only(right: 10),
                       ),
                       Text(
-                        '$_idade anos',
+                        '${motorista.idade} anos',
                         textScaleFactor: 1.5,
                       )
                     ],
@@ -97,7 +95,7 @@ class DriverProfilePage extends StatelessWidget {
                       const Padding(
                           padding: EdgeInsets.symmetric(vertical: 20)),
                       Text(
-                        username,
+                        '${motorista.nome} ${motorista.sobrenome}',
                         textScaleFactor: 1.5,
                         style: const TextStyle(
                           color: AppColors.brancosSub,
@@ -145,8 +143,8 @@ class DriverProfilePage extends StatelessWidget {
                   children: [
                     const Icon(Icons.directions_car),
                     const Padding(padding: EdgeInsets.only(right: 5)),
-                    const Text(
-                      'Meriva 2014',
+                    Text(
+                      motorista.carro,
                       textScaleFactor: 1.5,
                     ),
                     Container(
@@ -178,7 +176,8 @@ class DriverProfilePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height / 50),
-          Text('$username já realizou:', textScaleFactor: 1.2),
+          Text('${motorista.nome} ${motorista.sobrenome} já realizou:',
+              textScaleFactor: 1.2),
           SizedBox(height: MediaQuery.of(context).size.height / 100),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -216,7 +215,9 @@ class DriverProfilePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SupportProfilePage()),
+                            builder: (context) => SupportProfilePage(
+                                  motorista: motorista,
+                                )),
                       );
                     }),
               ),
@@ -234,8 +235,9 @@ class DriverProfilePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                ChatProfilePage(username: username)),
+                            builder: (context) => ChatProfilePage(
+                                  motorista: motorista,
+                                )),
                       );
                     }),
               ),

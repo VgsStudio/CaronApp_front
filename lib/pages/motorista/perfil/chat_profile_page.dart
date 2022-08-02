@@ -1,15 +1,20 @@
 import 'dart:math';
+import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
-import 'package:username_gen/username_gen.dart';
 
 class ChatProfilePage extends StatelessWidget {
-  final username;
-  ChatProfilePage({Key? key, required this.username}) : super(key: key);
+  static final _random = Random();
+  final Motorista motorista;
+
+  ChatProfilePage({
+    Key? key,
+    required this.motorista,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +31,9 @@ class ChatProfilePage extends StatelessWidget {
                 child: SvgPicture.string(
                     height: 50,
                     width: 50,
-                    multiavatar(username, trBackground: true))),
+                    multiavatar(motorista.foto, trBackground: true))),
             const Padding(padding: EdgeInsets.only(right: 10)),
-            Text('$username     |     '),
+            Text('${motorista.nome}     |     '),
             const Text('Online'),
             const Padding(padding: EdgeInsets.only(right: 10)),
             const Icon(
@@ -42,10 +47,7 @@ class ChatProfilePage extends StatelessWidget {
               icon: const Icon(Icons.more_vert),
               tooltip: 'Denunciar!',
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SupportProfilePage()),
-                );
+                Navigator.pop(context);
               })
         ],
       ),

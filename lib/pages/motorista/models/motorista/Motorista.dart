@@ -27,7 +27,18 @@ class Motorista {
       this.ano,
       this.bio,
       this.nViagens) {
-    idade = DateTime.now().year - nascimento.year;
+    idade = calcularIdade(nascimento);
     foto = multiavatar(nome);
   }
+}
+
+calcularIdade(DateTime dataNascimento) {
+  DateTime dataAtual = DateTime.now();
+  int idade = dataAtual.year - dataNascimento.year;
+  if (dataAtual.month <= dataNascimento.month &&
+      dataAtual.day < dataNascimento.day) {
+    return idade - 1;
+  }
+
+  return idade;
 }

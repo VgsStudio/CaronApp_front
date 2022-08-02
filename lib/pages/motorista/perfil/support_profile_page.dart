@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
@@ -10,12 +11,11 @@ import 'package:username_gen/username_gen.dart';
 import 'widget/support_opcao_widget.dart';
 
 class SupportProfilePage extends StatelessWidget {
-  SupportProfilePage({Key? key}) : super(key: key);
-
   static final _random = Random();
-  static final _nota = _random.nextInt(5) + 1;
-  static final _idade = _random.nextInt(23) + 18;
+  final Motorista motorista;
   final username = UsernameGen().generate();
+
+  SupportProfilePage({Key? key, required this.motorista}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +36,7 @@ class SupportProfilePage extends StatelessWidget {
                   ),
                   tooltip: 'Voltar',
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DriverProfilePage()),
-                    );
+                    Navigator.pop(context);
                   }),
             ),
           ),
@@ -62,7 +58,7 @@ class SupportProfilePage extends StatelessWidget {
                     child: SvgPicture.string(
                         height: 100,
                         width: 100,
-                        multiavatar(username, trBackground: true))),
+                        multiavatar(motorista.foto, trBackground: true))),
                 const Padding(padding: EdgeInsets.only(left: 20)),
                 Column(
                   children: [
@@ -70,7 +66,7 @@ class SupportProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Nota: $_nota',
+                          'Nota: ${motorista.rate.toStringAsFixed(2)}',
                           textScaleFactor: 1.5,
                         ),
                         const Padding(
@@ -84,7 +80,7 @@ class SupportProfilePage extends StatelessWidget {
                           padding: EdgeInsets.only(right: 10),
                         ),
                         Text(
-                          '$_idade anos',
+                          '${motorista.idade} anos',
                           textScaleFactor: 1.5,
                         )
                       ],
@@ -95,7 +91,7 @@ class SupportProfilePage extends StatelessWidget {
                         const Padding(
                             padding: EdgeInsets.symmetric(vertical: 20)),
                         Text(
-                          username,
+                          '${motorista.nome} ${motorista.sobrenome}',
                           textScaleFactor: 1.5,
                           style: const TextStyle(
                             color: AppColors.brancosSub,
@@ -110,10 +106,10 @@ class SupportProfilePage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(Icons.assignment),
                         Padding(padding: EdgeInsets.only(left: 5)),
-                        Text('Engenharia Química', textScaleFactor: 1.5),
+                        Text(motorista.curso, textScaleFactor: 1.5),
                       ],
                     ),
                   ],
