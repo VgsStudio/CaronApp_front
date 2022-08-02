@@ -8,9 +8,16 @@ import '../../../shared/widgets/botaoVermelho_widget.dart';
 import '../../../shared/logo/app_logos.dart';
 import '../widgets/custom_textfield_widget.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  late String inputRA;
+  late String inputPass;
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
@@ -67,12 +74,19 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 72),
                     CustomTextFieldWidget(
-                        tamanhoTela: tamanhoTela, valor: "RA"),
+                        tamanhoTela: tamanhoTela,
+                        valor: "RA",
+                        onChanged: (value) {
+                          inputRA = value;
+                        }),
                     const SizedBox(height: 24),
                     CustomTextFieldWidget(
                       tamanhoTela: tamanhoTela,
                       valor: "Senha",
                       isObscure: true,
+                      onChanged: (value) {
+                        inputPass = value;
+                      },
                     ),
                     TextButton(
                         onPressed: navigateToResetSenha,
@@ -87,7 +101,10 @@ class LoginPage extends StatelessWidget {
                         )),
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
-                      onPressed: navigateToHome,
+                      onPressed: () {
+                        print('RA: $inputRA / Senha: $inputPass');
+                        navigateToHome();
+                      },
                       child: 'Login',
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
