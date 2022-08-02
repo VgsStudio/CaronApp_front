@@ -16,8 +16,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late String inputRA;
-  late String inputPass;
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
@@ -76,17 +74,13 @@ class _LoginPageState extends State<LoginPage> {
                     CustomTextFieldWidget(
                         tamanhoTela: tamanhoTela,
                         valor: "RA",
-                        onChanged: (value) {
-                          inputRA = value;
-                        }),
+                        onChanged: (value) {}),
                     const SizedBox(height: 24),
                     CustomTextFieldWidget(
                       tamanhoTela: tamanhoTela,
                       valor: "Senha",
                       isObscure: true,
-                      onChanged: (value) {
-                        inputPass = value;
-                      },
+                      onChanged: (value) {},
                     ),
                     TextButton(
                         onPressed: navigateToResetSenha,
@@ -101,10 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
-                      onPressed: () {
-                        print('RA: $inputRA / Senha: $inputPass');
-                        navigateToHome();
-                      },
+                      onPressed: navigateToHome,
                       child: 'Login',
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
