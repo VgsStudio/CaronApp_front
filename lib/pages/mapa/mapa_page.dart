@@ -1,6 +1,7 @@
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
+import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:flutter/material.dart';
@@ -114,8 +115,8 @@ class _MapaPageState extends State<MapaPage> {
                     padding: const EdgeInsets.only(bottom: 32),
                     child: BotaoVermelhoWidget(
                       width: null,
-                      child: "Procurar motoristas",
-                      onPressed: _mostrarMotoristas,
+                      child: "Procurar caronas",
+                      onPressed: mostrarCaronas,
                     ),
                   )
                 : const SizedBox.shrink()
@@ -123,8 +124,13 @@ class _MapaPageState extends State<MapaPage> {
         ));
   }
 
-  void _mostrarMotoristas() {
-    print(index);
+  void mostrarCaronas() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              HorariosPage(localRequisitado: locaisList[index])),
+    );
   }
 
   // Local Mockado

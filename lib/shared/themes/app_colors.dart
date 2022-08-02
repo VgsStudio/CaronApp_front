@@ -21,4 +21,7 @@ class AppColors {
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
       colors: AppColors.gradientBackgroundList);
+
+  static const azulClaro = Color(0xFF6B94FC);
+  static const verdeClaro = Color(0xFF16F862);
 }
