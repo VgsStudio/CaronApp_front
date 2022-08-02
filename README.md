@@ -5,5 +5,6 @@
 # CaronApp
 
 O CaronApp é um aplicativo de carona idealizado pela equipe 9 do Hackathon do Dev. Community destinando para universitários.
-
+<p align="center">
 <img src="https://user-images.githubusercontent.com/30734882/182283091-8be14cd9-ad76-49a0-a06d-bb9b94063334.png" alt="CaronApp logo" title="CaronApp" height="500" />
+</p>
