@@ -55,7 +55,7 @@ class CadastroTextFieldWidget extends StatelessWidget {
                     if (isEnabled) {
                       if ((value == null || value.isEmpty)) {
                         return 'Campo vazio';
-                      } else if (value.length != 11) {
+                      } else if (value.length != 10) {
                         return 'RA Inválido';
                       }
                       return null;
@@ -75,6 +75,22 @@ class CadastroTextFieldWidget extends StatelessWidget {
                         }
                       }
                     : null;
+    var nullMask = MaskTextInputFormatter(
+        mask:
+            '######################################################################################################################################################',
+        filter: {"#": RegExp('.*')},
+        type: MaskAutoCompletionType.lazy);
+    var maskFormatter = tipoCampoTextoEnum == TipoCampoTextoEnum.RA
+        ? MaskTextInputFormatter(
+            mask: '##.#####-#',
+            filter: {"#": RegExp(r'[0-9]')},
+            type: MaskAutoCompletionType.lazy)
+        : tipoCampoTextoEnum == TipoCampoTextoEnum.TELEFONE
+            ? MaskTextInputFormatter(
+                mask: '+55 (##) #####-####',
+                filter: {"#": RegExp(r'[0-9]')},
+                type: MaskAutoCompletionType.lazy)
+            : nullMask;
     var tamanhoTela = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: margin),
@@ -85,6 +101,7 @@ class CadastroTextFieldWidget extends StatelessWidget {
             width: tamanhoTela.width * widthMult,
             height: 40,
             child: TextFormField(
+              inputFormatters: [maskFormatter],
               validator: validator,
               maxLength: maxLength,
               enabled: isEnabled,

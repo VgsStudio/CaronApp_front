@@ -1,6 +1,7 @@
 import 'package:caronapp_front/pages/login/cadastro/cadastro_page.dart';
 import 'package:caronapp_front/pages/login/cadastro/widgets/cadastro_textfield_widget.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
+import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class ResetSenhaPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 64),
-                Text(
+                const Text(
                   "Esqueci minha senha",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
@@ -80,16 +81,23 @@ class ResetSenhaPage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text("Digite seu e-mail",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         )),
-                    CadastroTextFieldWidget(valor: "E-mail", widthMult: 0.7)
+                    CadastroTextFieldWidget(
+                      valor: "E-mail",
+                      widthMult: 0.7,
+                      prefixIcon: Icon(Icons.email_outlined),
+                    )
                   ],
                 ),
-                BotaoVermelhoWidget(child: "Continuar"),
+                const BotaoVermelhoWidget(child: "Continuar"),
+                SizedBox(
+                  height: 40,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Row(
@@ -108,7 +116,11 @@ class ResetSenhaPage extends StatelessWidget {
                                   decoration: TextDecoration.underline),
                             ))
                       ]),
-                )
+                ),
+                SizedBox(
+                  height: 445,
+                ),
+                BottomLogosWidget()
               ],
             ),
           ),

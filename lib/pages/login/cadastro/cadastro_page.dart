@@ -1,9 +1,8 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/pages/login/cadastro/widgets/cadastro_textfield_widget.dart';
 import 'package:caronapp_front/pages/login/cadastro/widgets/definir_tipo_textfield_enum.dart';
-import 'package:caronapp_front/pages/login/cadastro/widgets/ra_textfield_widget.dart';
-import 'package:caronapp_front/pages/login/cadastro/widgets/telefone_textfield_widget.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
+import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
@@ -149,12 +148,12 @@ class _CadastroPageState extends State<CadastroPage> {
                         },
                       ),
                       SizedBox(
-                        width: 18,
+                        width: 24,
                       ),
                       CadastroTextFieldWidget(
                         isEnabled: nomeSocial,
                         valor: "Nome Social",
-                        widthMult: 0.5,
+                        widthMult: 0.55,
                         margin: 0,
                         prefixIcon: Icon(Icons.person),
                       )
@@ -170,7 +169,8 @@ class _CadastroPageState extends State<CadastroPage> {
                       color: AppColors.cinzaClaro,
                     ),
                   ),
-                  TelefoneTextFieldWidget(
+                  CadastroTextFieldWidget(
+                    tipoCampoTextoEnum: TipoCampoTextoEnum.TELEFONE,
                     widthMult: 0.9,
                     valor: "Telefone",
                     prefixIcon: const Icon(
@@ -178,7 +178,8 @@ class _CadastroPageState extends State<CadastroPage> {
                       color: AppColors.cinzaClaro,
                     ),
                   ),
-                  RATextFieldWidget(
+                  CadastroTextFieldWidget(
+                    tipoCampoTextoEnum: TipoCampoTextoEnum.RA,
                     widthMult: 0.9,
                     valor: "RA",
                     prefixIcon: const Icon(
@@ -347,26 +348,7 @@ class _CadastroPageState extends State<CadastroPage> {
                   SizedBox(
                     height: 96,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        AppLogo.imtQuadrado,
-                        filterQuality: FilterQuality.high,
-                        width: 96,
-                        height: 96,
-                      ),
-                      SizedBox(
-                        width: tamanhoTela.width * 0.1,
-                      ),
-                      Image.asset(
-                        AppLogo.dev,
-                        filterQuality: FilterQuality.high,
-                        width: 116,
-                        height: 116,
-                      ),
-                    ],
-                  )
+                  BottomLogosWidget()
                 ],
               ),
             ),
