@@ -1,8 +1,10 @@
 import 'package:caronapp_front/pages/login/splash/splash_page.dart';
+import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
             primary: AppColors.vermelhoGrena,
             surface: AppColors.cinzaBackground,
           )),
-      home: DriverProfilePage(), //botar o splash
+      home: HorariosPage(), //botar o splash
     );
   }
 }

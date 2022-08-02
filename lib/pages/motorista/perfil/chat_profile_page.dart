@@ -8,12 +8,8 @@ import 'package:multiavatar/multiavatar.dart';
 import 'package:username_gen/username_gen.dart';
 
 class ChatProfilePage extends StatelessWidget {
-  ChatProfilePage({Key? key}) : super(key: key);
-
-  static final _random = Random();
-  static final _nota = _random.nextInt(5) + 1;
-  static final _idade = _random.nextInt(23) + 18;
-  final username = UsernameGen().generate();
+  final username;
+  ChatProfilePage({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

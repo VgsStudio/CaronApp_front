@@ -1,6 +1,7 @@
 import 'package:caronapp_front/pages/mapa/mapa_page.dart';
-import 'package:caronapp_front/pages/motorista/chat_profile_page.dart';
-import 'package:caronapp_front/pages/motorista/support_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/chat_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
+import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:multiavatar/multiavatar.dart';
@@ -9,8 +10,6 @@ import 'package:flutter_svg/svg.dart';
 import 'dart:math';
 
 class DriverProfilePage extends StatelessWidget {
-  DriverProfilePage({Key? key}) : super(key: key);
-
   static final _random = Random();
   static final _nota = _random.nextInt(5) + 1;
   static final _idade = _random.nextInt(23) + 18;
@@ -22,6 +21,8 @@ class DriverProfilePage extends StatelessWidget {
     '../assets/images/PlacasCarros/Placa3.png',
   ];
   var imagemrnd = listaimagens[_random.nextInt(listaimagens.length)];
+
+  DriverProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +40,7 @@ class DriverProfilePage extends StatelessWidget {
                   iconSize: 4,
                   padding: EdgeInsets.zero,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MapaPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   icon: const CircleAvatar(
                     backgroundColor: Colors.transparent,
@@ -236,7 +234,8 @@ class DriverProfilePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ChatProfilePage()),
+                            builder: (context) =>
+                                ChatProfilePage(username: username)),
                       );
                     }),
               ),
@@ -246,12 +245,12 @@ class DriverProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
-                '../assets/images/LogoIMT.png',
+                AppLogo.imt,
                 height: MediaQuery.of(context).size.height / 5,
                 width: MediaQuery.of(context).size.width / 5,
               ),
               Image.asset(
-                '../assets/images/LogoDev.png',
+                AppLogo.dev,
                 height: MediaQuery.of(context).size.height / 5,
                 width: MediaQuery.of(context).size.width / 5,
               )

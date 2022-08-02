@@ -169,7 +169,7 @@ class SupportProfilePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 5,
               ),
               Image.asset(
-                AppLogo.caronApp,
+                AppLogo.dev,
                 height: MediaQuery.of(context).size.height / 5,
                 width: MediaQuery.of(context).size.width / 5,
               )
