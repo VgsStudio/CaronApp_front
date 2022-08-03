@@ -35,73 +35,74 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
       title: Row(
         children: [
           Container(
-            width: 16,
-            padding: const EdgeInsets.only(right: 8),
+            width: 8,
+            margin: const EdgeInsets.only(right: 8),
             child: ImageIcon(
               size: 56,
               AssetImage("assets/images/where to.png"),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: AppColors.preto,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 12),
-                    child: Text(
-                      "Instituto Mauá de Tecnologia",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.cinzaClaro,
-                          fontWeight: FontWeight.bold),
+          Expanded(
+            flex: 16,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: AppColors.preto,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 12),
+                      child: Text(
+                        "Instituto Mauá de Tecnologia",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: AppColors.cinzaClaro,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 40,
-                child: Focus(
-                  onFocusChange: (opened) {
-                    if (opened) {
-                      widget.trocarBooleano();
-                    }
-                  },
-                  child: TextFormField(
-                    controller: widget.controller,
-                    onChanged: widget.onChanged,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: AppColors.cinzaClaro,
-                    ),
-                    decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(left: 12),
-                        hintText: widget.valor,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
+                SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                  height: 40,
+                  child: Focus(
+                    onFocusChange: (opened) {
+                      if (opened) {
+                        widget.trocarBooleano();
+                      }
+                    },
+                    child: TextFormField(
+                      controller: widget.controller,
+                      onChanged: widget.onChanged,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: AppColors.cinzaClaro,
+                      ),
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.only(left: 12),
+                          hintText: widget.valor,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
                           ),
-                        ),
-                        filled: true,
-                        fillColor: AppColors.preto),
+                          filled: true,
+                          fillColor: AppColors.preto),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
