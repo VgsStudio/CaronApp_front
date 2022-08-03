@@ -89,12 +89,12 @@ class ResetSenhaPage extends StatelessWidget {
                         )),
                     CadastroTextFieldWidget(
                       valor: "E-mail",
-                      widthMult: 0.7,
                       prefixIcon: Icon(Icons.email_outlined),
                     )
                   ],
                 ),
-                const BotaoVermelhoWidget(child: "Continuar"),
+                BotaoVermelhoWidget(
+                    child: "Continuar", onPressed: navigateToLogin),
                 SizedBox(
                   height: 40,
                 ),
@@ -118,7 +118,7 @@ class ResetSenhaPage extends StatelessWidget {
                       ]),
                 ),
                 SizedBox(
-                  height: 445,
+                  height: MediaQuery.of(context).size.height * 0.3,
                 ),
                 BottomLogosWidget()
               ],

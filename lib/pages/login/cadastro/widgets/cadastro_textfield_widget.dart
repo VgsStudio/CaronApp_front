@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CadastroTextFieldWidget extends StatelessWidget {
-  final double widthMult;
   final String valor;
   final double margin;
   final Icon prefixIcon;
@@ -16,7 +15,6 @@ class CadastroTextFieldWidget extends StatelessWidget {
   const CadastroTextFieldWidget(
       {Key? key,
       required this.valor,
-      required this.widthMult,
       this.margin = 12,
       this.prefixIcon = const Icon(
         Icons.error,
@@ -44,7 +42,9 @@ class CadastroTextFieldWidget extends StatelessWidget {
                 if (isEnabled) {
                   if ((value == null || value.isEmpty)) {
                     return 'Campo vazio';
-                  } else if (value.contains('@') == false) {
+                  } else if (!RegExp(
+                          r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*")
+                      .hasMatch(value)) {
                     return 'E-mail inválido';
                   }
                   return null;
@@ -64,22 +64,31 @@ class CadastroTextFieldWidget extends StatelessWidget {
                 : tipoCampoTextoEnum == TipoCampoTextoEnum.SENHA
                     ? (value) {
                         RegExp regex =
-                            RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+                            RegExp(r'^(?=.*?[a-zA-Z])(?=.*?[0-9]).{8,}$');
                         if (isEnabled) {
                           if ((value == null || value.isEmpty)) {
                             return 'Campo vazio';
+                          } else if (value.length < 8) {
+                            return 'A senha precisa de pelo menos oito caractéres';
                           } else if (!regex.hasMatch(value)) {
-                            return 'Senha inválida';
+                            return 'A senha precisa de pelo menos um número';
                           }
                           return null;
                         }
                       }
-                    : null;
-    var nullMask = MaskTextInputFormatter(
-        mask:
-            '######################################################################################################################################################',
-        filter: {"#": RegExp('.*')},
-        type: MaskAutoCompletionType.lazy);
+                    : tipoCampoTextoEnum == TipoCampoTextoEnum.TELEFONE
+                        ? (value) {
+                            if (isEnabled) {
+                              if (value == null || value.isEmpty) {
+                                return 'Campo vazio';
+                              } else if (value.length < 18 ||
+                                  value.length > 19) {
+                                return 'Telefone inválido';
+                              }
+                            }
+                          }
+                        : null;
+    var nullMask = MaskTextInputFormatter();
     var maskFormatter = tipoCampoTextoEnum == TipoCampoTextoEnum.RA
         ? MaskTextInputFormatter(
             mask: '##.#####-#',
@@ -90,50 +99,43 @@ class CadastroTextFieldWidget extends StatelessWidget {
                 mask: '+55 (##) #####-####',
                 filter: {"#": RegExp(r'[0-9]')},
                 type: MaskAutoCompletionType.lazy)
-            : nullMask;
+            : tipoCampoTextoEnum == TipoCampoTextoEnum.TEXTO
+                ? MaskTextInputFormatter(
+                    mask: '#' * 150, filter: {"#": RegExp("^[A-zÀ-ú '´]+")})
+                : nullMask;
     var tamanhoTela = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: margin),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: tamanhoTela.width * widthMult,
-            height: 40,
-            child: TextFormField(
-              inputFormatters: [maskFormatter],
-              validator: validator,
-              maxLength: maxLength,
-              enabled: isEnabled,
-              onEditingComplete: () => FocusScope.of(context).nextFocus(),
-              obscureText: isObscure,
-              style: const TextStyle(fontSize: 16),
-              decoration: InputDecoration(
-                  counterText: '',
-                  errorStyle: TextStyle(fontSize: 0.01),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                          color: AppColors.vermelhoGrena,
-                          width: 0.5,
-                          style: BorderStyle.solid)),
-                  prefixIcon: prefixIcon,
-                  contentPadding: const EdgeInsets.only(left: 12),
-                  hintText: valor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: isEnabled
-                      ? AppColors.cinzaEscuro
-                      : AppColors.cinzaBackground),
+      margin: EdgeInsets.all(8),
+      child: TextFormField(
+        inputFormatters: [maskFormatter],
+        validator: validator,
+        maxLength: maxLength,
+        enabled: isEnabled,
+        onEditingComplete: () => FocusScope.of(context).nextFocus(),
+        obscureText: isObscure,
+        style: const TextStyle(fontSize: 16),
+        decoration: InputDecoration(
+            counterText: '',
+            errorStyle: TextStyle(fontSize: 0),
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                    color: AppColors.vermelhoGrena,
+                    width: 0.5,
+                    style: BorderStyle.solid)),
+            prefixIcon: prefixIcon,
+            contentPadding: const EdgeInsets.only(left: 12),
+            hintText: valor,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                width: 0,
+                style: BorderStyle.none,
+              ),
             ),
-          ),
-        ],
+            filled: true,
+            fillColor:
+                isEnabled ? AppColors.cinzaEscuro : AppColors.cinzaBackground),
       ),
     );
   }
