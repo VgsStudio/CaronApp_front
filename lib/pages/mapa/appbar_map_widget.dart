@@ -10,6 +10,7 @@ class AppBarMapWidget extends StatefulWidget {
   final Function fullfield;
   final void Function(String) onChanged;
   final controller;
+  final focusNode;
 
   const AppBarMapWidget({
     Key? key,
@@ -18,6 +19,7 @@ class AppBarMapWidget extends StatefulWidget {
     required this.trocarBooleano,
     required this.onChanged,
     this.controller = TextEditingController,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -73,28 +75,33 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
-                child: TextFormField(
-                  controller: widget.controller,
-                  onChanged: widget.onChanged,
-                  onTap: () {
-                    widget.trocarBooleano();
+                child: Focus(
+                  onFocusChange: (opened) {
+                    if (opened) {
+                      widget.trocarBooleano();
+                    }
                   },
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: AppColors.cinzaClaro,
-                  ),
-                  decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(left: 12),
-                      hintText: widget.valor,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
+                  child: TextFormField(
+                    focusNode: widget.focusNode,
+                    controller: widget.controller,
+                    onChanged: widget.onChanged,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: AppColors.cinzaClaro,
+                    ),
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.only(left: 12),
+                        hintText: widget.valor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
                         ),
-                      ),
-                      filled: true,
-                      fillColor: AppColors.preto),
+                        filled: true,
+                        fillColor: AppColors.preto),
+                  ),
                 ),
               ),
             ],
