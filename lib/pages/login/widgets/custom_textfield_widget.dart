@@ -5,15 +5,8 @@ import '../../../shared/themes/app_colors.dart';
 class CustomTextFieldWidget extends StatelessWidget {
   final tamanhoTela;
   final String valor;
-  final bool isObscure;
-  final onChanged;
 
-  const CustomTextFieldWidget(
-      {Key? key,
-      this.tamanhoTela,
-      required this.valor,
-      this.isObscure = false,
-      this.onChanged})
+  const CustomTextFieldWidget({Key? key, this.tamanhoTela, required this.valor})
       : super(key: key);
 
   @override
@@ -25,9 +18,6 @@ class CustomTextFieldWidget extends StatelessWidget {
           width: 240,
           height: 40,
           child: TextField(
-            onChanged: onChanged,
-            obscureText: isObscure,
-            onEditingComplete: () => FocusScope.of(context).nextFocus(),
             style: const TextStyle(fontSize: 16),
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.only(left: 12),

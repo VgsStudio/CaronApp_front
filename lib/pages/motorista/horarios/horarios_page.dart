@@ -51,31 +51,28 @@ class _HorariosPageState extends State<HorariosPage> {
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-            child: Column(children: [
-              SizedBox(height: 64),
+            child: ListView(children: [
               Text(
                 "Ter., 2 de agosto",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
               caronas.length > 0
-                  ? Expanded(
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        itemCount: caronas.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Align(
-                            child: OpcaoCaronaWidget(
-                              horario: caronas[index].data,
-                              qntPassageiros: caronas[index].qntPassageiros,
-                              motorista: caronas[index].motorista,
-                              local: caronas[index].local,
-                            ),
-                          );
-                        },
-                      ),
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: caronas.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Align(
+                          child: OpcaoCaronaWidget(
+                            horario: caronas[index].data,
+                            qntPassageiros: caronas[index].qntPassageiros,
+                            motorista: caronas[index].motorista,
+                            local: caronas[index].local,
+                          ),
+                        );
+                      },
                     )
                   : Center(
                       child: Row(
