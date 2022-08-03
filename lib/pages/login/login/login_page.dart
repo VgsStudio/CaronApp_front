@@ -1,4 +1,6 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
+import 'package:caronapp_front/pages/login/cadastro/cadastro_page.dart';
+import 'package:caronapp_front/pages/login/resetsenha/resetsenha_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +8,14 @@ import '../../../shared/widgets/botaoVermelho_widget.dart';
 import '../../../shared/logo/app_logos.dart';
 import '../widgets/custom_textfield_widget.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
@@ -16,6 +23,26 @@ class LoginPage extends StatelessWidget {
           context,
           PageRouteBuilder(
               pageBuilder: (c, a1, a2) => HomePage(),
+              transitionsBuilder: (c, anim, a2, child) =>
+                  FadeTransition(opacity: anim, child: child),
+              transitionDuration: const Duration(milliseconds: 500)));
+    }
+
+    navigateToResetSenha() async {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => ResetSenhaPage(),
+              transitionsBuilder: (c, anim, a2, child) =>
+                  FadeTransition(opacity: anim, child: child),
+              transitionDuration: const Duration(milliseconds: 500)));
+    }
+
+    navigateToCadastro() async {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => CadastroPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -45,12 +72,18 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 72),
                     CustomTextFieldWidget(
-                        tamanhoTela: tamanhoTela, valor: "RA"),
+                        tamanhoTela: tamanhoTela,
+                        valor: "RA",
+                        onChanged: (value) {}),
                     const SizedBox(height: 24),
                     CustomTextFieldWidget(
-                        tamanhoTela: tamanhoTela, valor: "Senha"),
+                      tamanhoTela: tamanhoTela,
+                      valor: "Senha",
+                      isObscure: true,
+                      onChanged: (value) {},
+                    ),
                     TextButton(
-                        onPressed: navigateToHome,
+                        onPressed: navigateToResetSenha,
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent),
@@ -60,7 +93,6 @@ class LoginPage extends StatelessWidget {
                           style:
                               TextStyle(decoration: TextDecoration.underline),
                         )),
-
                     const SizedBox(height: 24),
                     BotaoVermelhoWidget(
                       onPressed: navigateToHome,
@@ -69,7 +101,7 @@ class LoginPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       const Text("Não é cadastrado?"),
                       TextButton(
-                          onPressed: navigateToHome,
+                          onPressed: navigateToCadastro,
                           style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.transparent),

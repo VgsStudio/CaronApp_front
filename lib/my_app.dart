@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             primary: AppColors.vermelhoGrena,
             surface: AppColors.cinzaBackground,
           )),
-      home: const SplashPage(),
+      home: SplashPage(), //botar o splash
     );
   }
 }
