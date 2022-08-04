@@ -1,5 +1,6 @@
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
+import 'package:caronapp_front/pages/mapa/widget/carona_em_andamento_widget.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
@@ -119,7 +120,10 @@ class _MapaPageState extends State<MapaPage> {
                       onPressed: mostrarCaronas,
                     ),
                   )
-                : const SizedBox.shrink()
+                : const SizedBox.shrink(),
+            Container(
+                alignment: Alignment.bottomCenter,
+                child: CaronaAndamentoWidget())
           ],
         ));
   }
