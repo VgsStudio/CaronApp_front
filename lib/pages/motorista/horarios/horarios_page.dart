@@ -51,24 +51,15 @@ class _HorariosPageState extends State<HorariosPage> {
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,
-<<<<<<< HEAD
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
             child: ListView(children: [
-=======
-
-            decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-            child: Column(children: [
-              SizedBox(height: 64),
-
->>>>>>> d7a78d3f142a788b2559f51b178eeb7169e89805
               Text(
                 "Ter., 2 de agosto",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
               caronas.length > 0
-<<<<<<< HEAD
                   ? ListView.builder(
                       shrinkWrap: true,
                       itemCount: caronas.length,
@@ -82,26 +73,6 @@ class _HorariosPageState extends State<HorariosPage> {
                           ),
                         );
                       },
-=======
-
-                  ? Expanded(
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        itemCount: caronas.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Align(
-                            child: OpcaoCaronaWidget(
-                              horario: caronas[index].data,
-                              qntPassageiros: caronas[index].qntPassageiros,
-                              motorista: caronas[index].motorista,
-                              local: caronas[index].local,
-                            ),
-                          );
-                        },
-                      ),
-
->>>>>>> d7a78d3f142a788b2559f51b178eeb7169e89805
                     )
                   : Center(
                       child: Row(

@@ -10,14 +10,6 @@ class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-<<<<<<< HEAD
-=======
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
->>>>>>> d7a78d3f142a788b2559f51b178eeb7169e89805
   Widget build(BuildContext context) {
     navigateToHome() async {
       Navigator.pushReplacement(
@@ -53,23 +45,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 72),
                     CustomTextFieldWidget(
-<<<<<<< HEAD
                         tamanhoTela: tamanhoTela, valor: "RA"),
                     const SizedBox(height: 24),
                     CustomTextFieldWidget(
                         tamanhoTela: tamanhoTela, valor: "Senha"),
-=======
-                        tamanhoTela: tamanhoTela,
-                        valor: "RA",
-                        onChanged: (value) {}),
-                    const SizedBox(height: 24),
-                    CustomTextFieldWidget(
-                      tamanhoTela: tamanhoTela,
-                      valor: "Senha",
-                      isObscure: true,
-                      onChanged: (value) {},
-                    ),
->>>>>>> d7a78d3f142a788b2559f51b178eeb7169e89805
                     TextButton(
                         onPressed: navigateToHome,
                         style: ButtonStyle(
