@@ -2,6 +2,7 @@ import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/motorista/models/carona/caronas_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/opcao_carona_widget.dart';
@@ -28,41 +29,20 @@ class _HorariosPageState extends State<HorariosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Container(
-            child: IconButton(
-                iconSize: 4,
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                    size: 32,
-                  ),
-                )),
-          ),
-        ),
+        appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(40),
+            child: AppBarTransparenteWidget()),
         body: Container(
             width: MediaQuery.of(context).size.width,
-
             decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
             child: Column(children: [
-              SizedBox(height: 64),
-
+              const SizedBox(height: 40),
               Text(
                 "Ter., 2 de agosto",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
               caronas.length > 0
-
                   ? Expanded(
                       child: ListView.builder(
                         padding: EdgeInsets.zero,
@@ -79,7 +59,6 @@ class _HorariosPageState extends State<HorariosPage> {
                           );
                         },
                       ),
-
                     )
                   : Center(
                       child: Row(
