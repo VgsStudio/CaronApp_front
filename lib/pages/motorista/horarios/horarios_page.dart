@@ -1,10 +1,8 @@
 import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
-import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/motorista/models/carona/caronas_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
-
 import 'widgets/opcao_carona_widget.dart';
 
 class HorariosPage extends StatefulWidget {
