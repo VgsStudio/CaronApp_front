@@ -35,10 +35,11 @@ class Motorista {
 calcularIdade(DateTime dataNascimento) {
   DateTime dataAtual = DateTime.now();
   int idade = dataAtual.year - dataNascimento.year;
-  if (dataAtual.month <= dataNascimento.month &&
+  if (dataAtual.month <= dataNascimento.month) {
+    return idade - 1;
+  } else if (dataAtual.month == dataNascimento.month &&
       dataAtual.day < dataNascimento.day) {
     return idade - 1;
   }
-
   return idade;
 }
