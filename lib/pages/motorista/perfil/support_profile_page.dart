@@ -3,6 +3,7 @@ import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
@@ -20,26 +21,13 @@ class SupportProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(40),
+          child: AppBarTransparenteWidget()),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: SizedBox(
-              height: 40,
-              width: 40,
-              child: IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 40,
-                  ),
-                  tooltip: 'Voltar',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-            ),
-          ),
+          SizedBox(height: 24),
           Container(
             width: MediaQuery.of(context).size.width / 1.2,
             decoration: BoxDecoration(
