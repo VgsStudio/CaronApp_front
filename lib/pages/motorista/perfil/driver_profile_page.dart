@@ -2,17 +2,15 @@ import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/pages/motorista/perfil/chat_profile_page.dart';
 import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
+import 'package:caronapp_front/shared/placa_mercosul_widget.dart';
 import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:multiavatar/multiavatar.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
 
 class DriverProfilePage extends StatelessWidget {
   final Motorista motorista;
-  static final _random = Random();
-  static final _viagens = _random.nextInt(100) + 20;
 
   DriverProfilePage({Key? key, required this.motorista}) : super(key: key);
 
@@ -150,10 +148,10 @@ class DriverProfilePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Text(
-                          motorista.placa,
-                          style: TextStyle(fontSize: 24),
-                        )
+                        SizedBox(
+                          height: 6,
+                        ),
+                        PlacaMercosulWidget(placa: motorista.placa)
                       ],
                     ),
                     SizedBox(
