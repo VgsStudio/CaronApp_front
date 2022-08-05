@@ -26,10 +26,6 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(40),
-          child: AppBarTransparenteWidget()),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40),
         width: double.infinity,
