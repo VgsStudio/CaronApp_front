@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 
 class BotaoVermelhoWidget extends StatelessWidget {
   final onPressed;
+  final double fontSize;
   final String child;
   final double? width;
 
   const BotaoVermelhoWidget(
-      {Key? key, this.onPressed, required this.child, this.width = 176})
+      {Key? key,
+      this.onPressed,
+      required this.child,
+      this.width = 176,
+      this.fontSize = 18})
       : super(key: key);
 
   @override
@@ -25,8 +30,10 @@ class BotaoVermelhoWidget extends StatelessWidget {
                   MaterialStateProperty.all(AppColors.vermelhoGrena)),
           child: Text(
             child,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: fontSize),
           )),
     );
   }
