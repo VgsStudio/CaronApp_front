@@ -2,6 +2,7 @@ import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/motorista/models/carona/caronas_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/opcao_carona_widget.dart';
@@ -28,51 +29,36 @@ class _HorariosPageState extends State<HorariosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Container(
-            child: IconButton(
-                iconSize: 4,
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                    size: 32,
-                  ),
-                )),
-          ),
-        ),
+        appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(40),
+            child: AppBarTransparenteWidget()),
         body: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-            child: ListView(children: [
+            child: Column(children: [
+              const SizedBox(height: 40),
               Text(
                 "Ter., 2 de agosto",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
               caronas.length > 0
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: caronas.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Align(
-                          child: OpcaoCaronaWidget(
-                            horario: caronas[index].data,
-                            qntPassageiros: caronas[index].qntPassageiros,
-                            motorista: caronas[index].motorista,
-                            local: caronas[index].local,
-                          ),
-                        );
-                      },
+                  ? Expanded(
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemCount: caronas.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Align(
+                            child: OpcaoCaronaWidget(
+                              horario: caronas[index].data,
+                              qntPassageiros: caronas[index].qntPassageiros,
+                              motorista: caronas[index].motorista,
+                              local: caronas[index].local,
+                            ),
+                          );
+                        },
+                      ),
                     )
                   : Center(
                       child: Row(

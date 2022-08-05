@@ -6,19 +6,40 @@ import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapaPage extends StatefulWidget {
-  MapaPage({Key? key}) : super(key: key);
+  final int? buttonOption;
+  final bool? focarNoTextForm;
+
+  MapaPage({Key? key, this.buttonOption = -1, this.focarNoTextForm = false})
+      : super(key: key);
 
   @override
   State<MapaPage> createState() => _MapaPageState();
 }
 
 class _MapaPageState extends State<MapaPage> {
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.focarNoTextForm != null) {
+      focusNode.requestFocus();
+    }
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+
+    super.dispose();
+  }
+
   var controllerSearchField = TextEditingController();
   late var locais = locaisList;
   String query = '';
@@ -48,6 +69,10 @@ class _MapaPageState extends State<MapaPage> {
     setState(() {
       markers.add(mauaMarker);
     });
+
+    if (widget.buttonOption != null) {
+      _navigateTo(widget.buttonOption);
+    }
   }
 
   @override
@@ -57,6 +82,7 @@ class _MapaPageState extends State<MapaPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(136),
           child: AppBarMapWidget(
+            focusNode: focusNode,
             controller: controllerSearchField,
             onChanged: searchLocal,
             trocarBooleano: trocarBooleano,
