@@ -175,5 +175,3 @@ class _HomePageState extends State<HomePage> {
     _navigateToMapa(op);
   }
 }
-
-
