@@ -13,12 +13,6 @@ class DriverProfilePage extends StatelessWidget {
   final Motorista motorista;
   static final _random = Random();
   static final _viagens = _random.nextInt(100) + 20;
-  static var listaimagens = [
-    'assets/images/PlacasCarros/Placa1.png',
-    'assets/images/PlacasCarros/Placa2.png',
-    'assets/images/PlacasCarros/Placa3.png',
-  ];
-  var imagemrnd = listaimagens[_random.nextInt(listaimagens.length)];
 
   DriverProfilePage({Key? key, required this.motorista}) : super(key: key);
 
@@ -156,11 +150,10 @@ class DriverProfilePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Image.asset(
-                          imagemrnd.toString(),
-                          fit: BoxFit.scaleDown,
-                          scale: 5.8,
-                        ),
+                        Text(
+                          motorista.placa,
+                          style: TextStyle(fontSize: 24),
+                        )
                       ],
                     ),
                     SizedBox(
@@ -198,7 +191,7 @@ class DriverProfilePage extends StatelessWidget {
                   children: [
                     const Icon(Icons.airport_shuttle),
                     Text(
-                      '  $_viagens Viagens!',
+                      '  ${motorista.nViagens} Viagens!',
                       textScaleFactor: 1.5,
                     ),
                     const Padding(padding: EdgeInsets.symmetric(horizontal: 2))

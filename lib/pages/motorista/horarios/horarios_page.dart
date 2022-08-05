@@ -1,5 +1,6 @@
 import 'package:caronapp_front/pages/mapa/entities.dart/Local.dart';
 import 'package:caronapp_front/pages/motorista/models/carona/caronas_json.dart';
+import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,10 @@ import 'widgets/opcao_carona_widget.dart';
 
 class HorariosPage extends StatefulWidget {
   final Local localRequisitado;
+  final Function(Motorista) onTap;
 
-  HorariosPage({Key? key, required this.localRequisitado}) : super(key: key);
+  HorariosPage({Key? key, required this.localRequisitado, required this.onTap})
+      : super(key: key);
 
   @override
   State<HorariosPage> createState() => _HorariosPageState();
@@ -16,6 +19,7 @@ class HorariosPage extends StatefulWidget {
 
 class _HorariosPageState extends State<HorariosPage> {
   late var caronas = caronaList;
+  DateTime diaAtual = DateTime.now();
 
   @override
   void initState() {
@@ -36,7 +40,7 @@ class _HorariosPageState extends State<HorariosPage> {
             child: Column(children: [
               const SizedBox(height: 40),
               Text(
-                "Ter., 2 de agosto",
+                "Sex., ${diaAtual.day} de agosto",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
@@ -48,11 +52,17 @@ class _HorariosPageState extends State<HorariosPage> {
                         itemCount: caronas.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Align(
-                            child: OpcaoCaronaWidget(
-                              horario: caronas[index].data,
-                              qntPassageiros: caronas[index].qntPassageiros,
-                              motorista: caronas[index].motorista,
-                              local: caronas[index].local,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                                widget.onTap(caronas[index].motorista);
+                              },
+                              child: OpcaoCaronaWidget(
+                                horario: caronas[index].data,
+                                qntPassageiros: caronas[index].qntPassageiros,
+                                motorista: caronas[index].motorista,
+                                local: caronas[index].local,
+                              ),
                             ),
                           );
                         },

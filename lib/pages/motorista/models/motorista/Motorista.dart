@@ -8,6 +8,7 @@ class Motorista {
   late DateTime nascimento;
   late String curso;
   late String carro;
+  late String placa;
   late String genero;
   late int ano;
   late int idade;
@@ -23,6 +24,7 @@ class Motorista {
       this.nascimento,
       this.curso,
       this.carro,
+      this.placa,
       this.genero,
       this.ano,
       this.bio,

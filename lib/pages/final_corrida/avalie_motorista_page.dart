@@ -192,7 +192,7 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
             const Spacer(),
             BotaoVermelhoWidget(
               fontSize: 24,
-              child: "Avalie",
+              child: "Avaliar",
               width: null,
               onPressed: () {
                 Navigator.pushReplacement(
