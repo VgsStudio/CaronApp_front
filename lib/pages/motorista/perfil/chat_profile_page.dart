@@ -19,52 +19,53 @@ class ChatProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Container(
-                decoration: BoxDecoration(
-                  color: AppColors.cinzaClaro,
-                  borderRadius: BorderRadius.circular(52),
-                  border: Border.all(color: AppColors.brancosSub, width: 3),
+        appBar: AppBar(
+          title: Row(
+            children: [
+              Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.cinzaClaro,
+                    borderRadius: BorderRadius.circular(52),
+                    border: Border.all(color: AppColors.brancosSub, width: 3),
+                  ),
+                  child: SvgPicture.string(
+                      height: 45,
+                      width: 45,
+                      multiavatar(motorista.foto, trBackground: true))),
+              SizedBox(
+                width: 8,
+              ),
+              SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text(
+                    '${motorista.nome} | Online',
+                  )),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.01,
+                child: Icon(
+                  Icons.circle,
+                  color: AppColors.verdeClaro,
                 ),
-                child: SvgPicture.string(
-                    height: 50,
-                    width: 50,
-                    multiavatar(motorista.foto, trBackground: true))),
-            const Padding(padding: EdgeInsets.only(right: 10)),
-            Text('${motorista.nome}     |     '),
-            const Text('Online'),
-            const Padding(padding: EdgeInsets.only(right: 10)),
-            const Icon(
-              Icons.circle,
-              color: AppColors.verdeClaro,
-            )
+              )
+            ],
+          ),
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.more_vert),
+                tooltip: 'Denunciar!',
+                onPressed: () {
+                  Navigator.pop(context);
+                })
           ],
         ),
-        actions: [
-          IconButton(
-              icon: const Icon(Icons.more_vert),
-              tooltip: 'Denunciar!',
-              onPressed: () {
-                Navigator.pop(context);
-              })
-        ],
-      ),
-      bottomSheet: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container(
-          width: MediaQuery.of(context).size.width / 1,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: AppColors.cinzaClaro,
-              border: Border.all(color: AppColors.brancosSub)),
-          child: const Text(
-            'Digite aqui!',
-            textScaleFactor: 2.5,
-            textAlign: TextAlign.start,
-          ),
-        )
-      ]),
-    );
+        bottomSheet: TextField(
+          decoration: InputDecoration(
+              filled: true,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+              labelText: 'Digite aqui!'),
+          controller: TextEditingController(),
+          onSubmitted: null,
+        ));
   }
 }

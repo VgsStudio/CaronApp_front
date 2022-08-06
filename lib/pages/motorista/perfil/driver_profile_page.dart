@@ -24,7 +24,6 @@ class DriverProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tamanhoTela = MediaQuery.of(context).size;
     return Scaffold(
         body: Container(
       height: MediaQuery.of(context).size.height,
@@ -66,7 +65,6 @@ class DriverProfilePage extends StatelessWidget {
                         height: 75,
                         width: 75,
                         multiavatar(motorista.foto, trBackground: true))),
-                const Padding(padding: EdgeInsets.only(left: 20)),
                 Column(
                   children: [
                     Row(
@@ -98,25 +96,17 @@ class DriverProfilePage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              motorista.nome,
-                              textScaleFactor: 1.5,
-                              style: const TextStyle(
-                                color: AppColors.brancosSub,
-                              ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          child: Text(
+                            '${motorista.nome} ${motorista.sobrenome}',
+                            textAlign: TextAlign.center,
+                            textScaleFactor: 1.5,
+                            style: const TextStyle(
+                              color: AppColors.cinzaClaro,
                             ),
-                            Text(
-                              motorista.sobrenome,
-                              textScaleFactor: 1.5,
-                              style: const TextStyle(
-                                color: AppColors.brancosSub,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        const Padding(padding: EdgeInsets.only(right: 8)),
                         Icon(
                           Icons.verified,
                           color: AppColors.azulClaro,
@@ -128,10 +118,16 @@ class DriverProfilePage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(Icons.assignment),
-                        Padding(padding: EdgeInsets.only(left: 5)),
-                        Text(motorista.curso, textScaleFactor: 1.5),
+                        SizedBox(
+                          child: Text(
+                            motorista.curso,
+                            textScaleFactor: 1.5,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -162,12 +158,15 @@ class DriverProfilePage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.directions_car),
-                          const Padding(padding: EdgeInsets.only(right: 5)),
+                          Icon(Icons.directions_car),
                           FittedBox(
                             fit: BoxFit.scaleDown,
-                            child: Text(motorista.carro,
-                                style: const TextStyle(fontSize: 18)),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              child: Text(motorista.carro,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 18)),
+                            ),
                           ),
                         ],
                       ),
@@ -223,7 +222,7 @@ class DriverProfilePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 100,
+              height: MediaQuery.of(context).size.height / 550,
             ),
             Expanded(
               child: Row(
@@ -286,7 +285,7 @@ class DriverProfilePage extends StatelessWidget {
                     height: 96,
                   ),
                   SizedBox(
-                    width: tamanhoTela.width * 0.1,
+                    width: MediaQuery.of(context).size.width * 0.1,
                   ),
                   Image.asset(
                     AppLogo.dev,
