@@ -21,6 +21,31 @@ class _HorariosPageState extends State<HorariosPage> {
   late var caronas = caronaList;
   DateTime diaAtual = DateTime.now();
 
+  List<String> diasDaSemana = [
+    "Seg.",
+    "Ter.",
+    "Qua.",
+    "Qui.",
+    "Sex.",
+    "Sáb.",
+    "Dom."
+  ];
+
+  List<String> meses = [
+    'janeiro',
+    'fevereiro',
+    'março',
+    'abril',
+    'maio',
+    'junho',
+    'julho',
+    'agosto',
+    'setembro',
+    'outubro',
+    'novembro',
+    'dezembro'
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -40,7 +65,7 @@ class _HorariosPageState extends State<HorariosPage> {
             child: Column(children: [
               const SizedBox(height: 40),
               Text(
-                "Sex., ${diaAtual.day} de agosto",
+                "${diasDaSemana[diaAtual.weekday - 1]}, ${diaAtual.day} de ${meses[diaAtual.month - 1]}",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
@@ -71,6 +96,7 @@ class _HorariosPageState extends State<HorariosPage> {
                   : Center(
                       child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Flexible(
                           child: Text(

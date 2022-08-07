@@ -204,6 +204,7 @@ class _MapaPageState extends State<MapaPage> {
 
   void trocarBooleano() {
     setState(() {
+      isMotoristaChoosen = false;
       isOpcoesOpen = !isOpcoesOpen;
     });
   }

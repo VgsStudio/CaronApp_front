@@ -20,7 +20,7 @@ class AvalieMotoristaPage extends StatefulWidget {
 }
 
 class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
-  double rating = 0;
+  double rating = 5;
   List<int> gorjetaPrecos = [2, 5, 10];
 
   @override
@@ -132,7 +132,8 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
               height: 24,
             ),
             RatingBar.builder(
-                minRating: 1,
+                allowHalfRating: true,
+                initialRating: 5,
                 itemBuilder: (context, _) => Icon(
                       Icons.star,
                       color: AppColors.vermelhoGrena,

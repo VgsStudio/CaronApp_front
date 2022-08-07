@@ -1,35 +1,47 @@
-import 'dart:math';
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
-import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
-import 'package:username_gen/username_gen.dart';
 
 import 'widget/support_opcao_widget.dart';
 
 class SupportProfilePage extends StatelessWidget {
-  static final _random = Random();
   final Motorista motorista;
-  final username = UsernameGen().generate();
 
   SupportProfilePage({Key? key, required this.motorista}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(40),
-          child: AppBarTransparenteWidget()),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 24),
+          Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              height: 40,
+              width: 40,
+              child: IconButton(
+                  padding: const EdgeInsets.all(0.0),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    size: 40,
+                  ),
+                  tooltip: 'Voltar',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
+          ),
           Container(
-            width: MediaQuery.of(context).size.width / 1.2,
+            margin: EdgeInsets.all(4),
+            padding: EdgeInsets.all(4),
+            width: MediaQuery.of(context).size.width * 0.95,
             decoration: BoxDecoration(
                 color: AppColors.cinzaEscuro,
                 border: Border.all(color: AppColors.brancosSub, width: 3),
@@ -37,68 +49,85 @@ class SupportProfilePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.cinzaClaro,
-                      borderRadius: BorderRadius.circular(52),
-                      border: Border.all(color: AppColors.brancosSub, width: 3),
-                    ),
-                    child: SvgPicture.string(
-                        height: 100,
-                        width: 100,
-                        multiavatar(motorista.foto, trBackground: true))),
-                const Padding(padding: EdgeInsets.only(left: 20)),
+                SizedBox(
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.cinzaClaro,
+                        borderRadius: BorderRadius.circular(52),
+                        border:
+                            Border.all(color: AppColors.brancosSub, width: 3),
+                      ),
+                      child: SvgPicture.string(
+                          height: 100,
+                          width: 100,
+                          multiavatar(motorista.foto, trBackground: true))),
+                ),
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Nota: ${motorista.rate.toStringAsFixed(2)}',
-                          textScaleFactor: 1.5,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 2),
-                        ),
-                        const Icon(
-                          Icons.star,
-                          color: AppColors.brancosSub,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 10),
-                        ),
-                        Text(
-                          '${motorista.idade} anos',
-                          textScaleFactor: 1.5,
-                        )
-                      ],
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Nota: ${motorista.rate.toStringAsFixed(2)}',
+                            textScaleFactor: 1.5,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 2),
+                          ),
+                          const Icon(
+                            Icons.star,
+                            color: AppColors.brancosSub,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 10),
+                          ),
+                          Text(
+                            '${motorista.idade} anos',
+                            textScaleFactor: 1.5,
+                          )
+                        ],
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20)),
-                        Text(
-                          '${motorista.nome} ${motorista.sobrenome}',
-                          textScaleFactor: 1.5,
-                          style: const TextStyle(
-                            color: AppColors.brancosSub,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text(
+                            '${motorista.nome} ${motorista.sobrenome}',
+                            textAlign: TextAlign.center,
+                            textScaleFactor: 1.3,
+                            style: const TextStyle(
+                              color: AppColors.cinzaClaro,
+                            ),
                           ),
                         ),
-                        const Padding(padding: EdgeInsets.only(right: 5)),
                         const Icon(
                           Icons.verified,
                           color: AppColors.azulClaro,
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.assignment),
-                        Padding(padding: EdgeInsets.only(left: 5)),
-                        Text(motorista.curso, textScaleFactor: 1.5),
-                      ],
+                    Align(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.05,
+                              child: Icon(Icons.assignment)),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Text(
+                              motorista.curso,
+                              textAlign: TextAlign.center,
+                              textScaleFactor: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 )
@@ -119,45 +148,76 @@ class SupportProfilePage extends StatelessWidget {
                       color: AppColors.vermelhoGrena,
                     ),
                     tooltip: 'Acionar!',
-                    onPressed: () {})),
+                    onPressed: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                                title: const Text('Acionar!'),
+                                content: const Text(
+                                  'Você tem certeza que quer acionar a polícia?',
+                                  textAlign: TextAlign.justify,
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'Cancelar'),
+                                    child: const Text('Cancelar'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'Aceitar'),
+                                    child: const Text('Aceitar'),
+                                  ),
+                                ])))),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 50,
           ),
           const Text('O que deseja reportar sobre o mostorista?',
               textAlign: TextAlign.center, textScaleFactor: 1.5),
           SupportOpcaoWidget(
             onTap: () {},
-            texto: 'Ocorreu um roubo durante a carona',
+            texto: 'Ocorreu um roubo',
           ),
           SupportOpcaoWidget(
             onTap: () {},
-            texto: 'Ocorreu um acidente durante a carona',
+            texto: 'Ocorreu um acidente',
           ),
           SupportOpcaoWidget(
             onTap: () {},
-            texto: 'Ocorreu uma discriminação/injúria',
+            texto: 'Ocorreu uma injúria',
           ),
           SupportOpcaoWidget(
             onTap: () {},
-            texto: 'Foto/Nome não condiz com o motôrista',
+            texto: 'Foto/Nome não condiz',
           ),
           SupportOpcaoWidget(
             onTap: () {},
             texto: 'Reportar outro problema',
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                AppLogo.imt,
-                height: MediaQuery.of(context).size.height / 5,
-                width: MediaQuery.of(context).size.width / 5,
-              ),
-              Image.asset(
-                AppLogo.dev,
-                height: MediaQuery.of(context).size.height / 5,
-                width: MediaQuery.of(context).size.width / 5,
-              )
-            ],
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 50,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  AppLogo.imtQuadrado,
+                  filterQuality: FilterQuality.high,
+                  width: 96,
+                  height: 96,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                ),
+                Image.asset(
+                  AppLogo.dev,
+                  filterQuality: FilterQuality.high,
+                  width: 88,
+                  height: 88,
+                ),
+              ],
+            ),
           )
         ],
       ),

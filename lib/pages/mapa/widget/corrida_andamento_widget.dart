@@ -23,15 +23,13 @@ class CorridaAndamentoWidget extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Padding(
           padding: const EdgeInsets.all(30.0),
-          child: Expanded(
-            child: Text(
-              'Perfeito! Agora aguarde o motorista no ponto de carona.',
-              style: TextStyle(
-                fontSize: 20.1,
-                fontWeight: FontWeight.w600,
-              ),
-              textAlign: TextAlign.center,
+          child: Text(
+            'Perfeito! Agora aguarde o motorista no ponto de carona.',
+            style: TextStyle(
+              fontSize: 20.1,
+              fontWeight: FontWeight.w600,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
         Expanded(child: SpinKitRing(color: AppColors.vermelhoGrena, size: 70)),

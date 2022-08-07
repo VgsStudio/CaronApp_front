@@ -23,6 +23,7 @@ class DriverProfilePage extends StatelessWidget {
             preferredSize: Size.fromHeight(40),
             child: AppBarTransparenteWidget()),
         body: Container(
+          height: MediaQuery.of(context).size.height,
           decoration:
               const BoxDecoration(gradient: AppColors.backgroundGradient),
           child: Column(
@@ -137,17 +138,6 @@ class DriverProfilePage extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          children: [
-                            const Icon(Icons.directions_car),
-                            const Padding(padding: EdgeInsets.only(right: 5)),
-                            FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(motorista.carro,
-                                  style: const TextStyle(fontSize: 18)),
-                            ),
-                          ],
-                        ),
                         SizedBox(
                           height: 6,
                         ),
@@ -166,7 +156,7 @@ class DriverProfilePage extends StatelessWidget {
                               style: TextStyle(fontSize: 18)),
                         ),
                         Image.asset(
-                          'assets/images/Selo1.png',
+                          '../assets/images/Selo1.png',
                           fit: BoxFit.scaleDown,
                           scale: 12,
                         ),
