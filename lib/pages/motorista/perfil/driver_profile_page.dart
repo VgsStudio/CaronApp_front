@@ -138,6 +138,11 @@ class DriverProfilePage extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(motorista.carro,
+                              style: TextStyle(fontSize: 18)),
+                        ),
                         SizedBox(
                           height: 6,
                         ),
@@ -155,8 +160,11 @@ class DriverProfilePage extends StatelessWidget {
                           child: Text('Selos Recentes: ',
                               style: TextStyle(fontSize: 18)),
                         ),
+                        SizedBox(
+                          height: 6,
+                        ),
                         Image.asset(
-                          '../assets/images/Selo1.png',
+                          'assets/images/Selo1.png',
                           fit: BoxFit.scaleDown,
                           scale: 12,
                         ),
