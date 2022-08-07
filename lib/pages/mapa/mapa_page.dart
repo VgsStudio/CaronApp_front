@@ -1,24 +1,51 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:caronapp_front/pages/final_corrida/avalie_motorista_page.dart';
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
+import 'package:caronapp_front/pages/mapa/widget/preview_motorista_widget.dart';
 import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
+import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
+import 'package:caronapp_front/pages/motorista/models/motorista/motorista_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'widget/corrida_andamento_widget.dart';
+
 class MapaPage extends StatefulWidget {
-  MapaPage({Key? key}) : super(key: key);
+  final int? buttonOption;
+  final bool? focarNoTextForm;
+
+  MapaPage({Key? key, this.buttonOption = -1, this.focarNoTextForm = false})
+      : super(key: key);
 
   @override
   State<MapaPage> createState() => _MapaPageState();
 }
 
 class _MapaPageState extends State<MapaPage> {
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.focarNoTextForm != null) {
+      focusNode.requestFocus();
+    }
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+
+    super.dispose();
+  }
+
   var controllerSearchField = TextEditingController();
   late var locais = locaisList;
   String query = '';
@@ -27,6 +54,10 @@ class _MapaPageState extends State<MapaPage> {
   Set<Marker> markers = Set<Marker>();
   bool isOpcoesOpen = false;
   int index = -1;
+
+  bool isMotoristaChoosen = false;
+  late Motorista motoristaEscolhido;
+  bool isCaronaStarted = false;
 
   // DADOS MOCKADOS NESSA STRING
   var polyLinePontis;
@@ -48,6 +79,10 @@ class _MapaPageState extends State<MapaPage> {
     setState(() {
       markers.add(mauaMarker);
     });
+
+    if (widget.buttonOption != null) {
+      _navigateTo(widget.buttonOption);
+    }
   }
 
   @override
@@ -57,6 +92,7 @@ class _MapaPageState extends State<MapaPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(136),
           child: AppBarMapWidget(
+            focusNode: focusNode,
             controller: controllerSearchField,
             onChanged: searchLocal,
             trocarBooleano: trocarBooleano,
@@ -96,7 +132,22 @@ class _MapaPageState extends State<MapaPage> {
                       onPressed: mostrarCaronas,
                     ),
                   )
-                : const SizedBox.shrink()
+                : const SizedBox.shrink(),
+            isMotoristaChoosen
+                ? Align(
+                    alignment: Alignment.bottomCenter,
+                    child: PreviewMotoristaWidget(
+                      onTapCarona: iniciaCarona,
+                      onTapReturn: mostrarCaronas,
+                      motorista: motoristaEscolhido,
+                    ),
+                  )
+                : const SizedBox.shrink(),
+            isCaronaStarted
+                ? Align(
+                    alignment: Alignment.bottomCenter,
+                    child: CorridaAndamentoWidget())
+                : const SizedBox.shrink(),
           ],
         ));
   }
@@ -105,8 +156,10 @@ class _MapaPageState extends State<MapaPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) =>
-              HorariosPage(localRequisitado: locaisList[index])),
+          builder: (context) => HorariosPage(
+                localRequisitado: locaisList[index],
+                onTap: escolheMotorista,
+              )),
     );
   }
 
@@ -151,6 +204,7 @@ class _MapaPageState extends State<MapaPage> {
 
   void trocarBooleano() {
     setState(() {
+      isMotoristaChoosen = false;
       isOpcoesOpen = !isOpcoesOpen;
     });
   }
@@ -166,6 +220,34 @@ class _MapaPageState extends State<MapaPage> {
     setState(() {
       this.query = query;
       this.locais = locais;
+    });
+  }
+
+  void escolheMotorista(Motorista motorista) {
+    setState(() {
+      isMotoristaChoosen = true;
+      motoristaEscolhido = motorista;
+    });
+  }
+
+  void iniciaCarona() async {
+    setState(() {
+      isMotoristaChoosen = false;
+      isCaronaStarted = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) =>
+                  AvalieMotoristaPage(motorista: motoristaEscolhido),
+              transitionsBuilder: (c, anim, a2, child) => SlideTransition(
+                    position:
+                        Tween(begin: Offset(0, 1.0), end: Offset(0.0, 0.0))
+                            .animate(anim),
+                    child: child,
+                  )));
     });
   }
 }

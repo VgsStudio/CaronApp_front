@@ -49,8 +49,9 @@ class OpcaoCaronaWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                    "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
-                    style: TextStyle(fontSize: 20)),
+                  "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),

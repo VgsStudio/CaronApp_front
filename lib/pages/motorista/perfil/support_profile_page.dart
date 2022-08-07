@@ -1,20 +1,14 @@
-import 'dart:math';
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
-import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
-import 'package:username_gen/username_gen.dart';
 
 import 'widget/support_opcao_widget.dart';
 
 class SupportProfilePage extends StatelessWidget {
-  static final _random = Random();
   final Motorista motorista;
-  final username = UsernameGen().generate();
 
   SupportProfilePage({Key? key, required this.motorista}) : super(key: key);
 
