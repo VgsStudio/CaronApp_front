@@ -123,7 +123,6 @@ class CadastroTextFieldWidget extends StatelessWidget {
         style: const TextStyle(fontSize: 16),
         decoration: InputDecoration(
             counterText: '',
-            errorStyle: TextStyle(fontSize: 0),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
