@@ -3,7 +3,7 @@ import 'package:caronapp_front/pages/login/cadastro/widgets/cadastro_textfield_w
 import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

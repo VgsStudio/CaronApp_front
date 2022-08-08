@@ -5,7 +5,7 @@ import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 

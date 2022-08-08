@@ -49,8 +49,9 @@ class OpcaoCaronaWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                    "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
-                    style: TextStyle(fontSize: 20)),
+                  "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
@@ -122,21 +123,25 @@ class OpcaoCaronaWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(children: [
-                      Container(
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.4,
                         child: Text(
                           "${motorista.nome} ${motorista.sobrenome}",
-                          textScaleFactor: 1.2,
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 1.15,
                         ),
-                        margin: EdgeInsets.symmetric(vertical: 2),
                       ),
                       SizedBox(
-                        width: 8,
-                      ),
-                      Icon(
-                        Icons.verified,
-                        color: AppColors.azulClaro,
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        child: Icon(
+                          Icons.verified,
+                          color: AppColors.azulClaro,
+                        ),
                       )
                     ]),
+                    SizedBox(
+                      height: 8,
+                    ),
                     Row(
                       children: [
                         Text(
