@@ -102,7 +102,6 @@ class _CadastroPageState extends State<CadastroPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ListView(
                 children: [
-                  const SizedBox(height: 15),
                   Row(
                     children: const [
                       Expanded(

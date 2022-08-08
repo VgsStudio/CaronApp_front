@@ -6,7 +6,7 @@ import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
 import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/botaoVermelho_widget.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
