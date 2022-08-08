@@ -1,7 +1,6 @@
 import 'package:caronapp_front/pages/final_corrida/widgets/opcao_gorjeta.dart';
 import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
-import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -29,18 +28,18 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40),
         width: double.infinity,
-        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+        decoration: const BoxDecoration(gradient: AppColors.backgroundGradient),
         child: Column(
           children: [
-            Text(
+            const Text(
               "Avalie o Motorista",
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               decoration: BoxDecoration(
                   color: AppColors.cinzaEscuro,
                   borderRadius: BorderRadius.circular(16)),
@@ -50,7 +49,7 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
                         color: AppColors.cinzaClaro,
                         borderRadius: BorderRadius.circular(44),
@@ -70,22 +69,22 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                           children: [
                             Text(
                               widget.motorista.rate.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 4,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: AppColors.brancosSub,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Text(
                               "${widget.motorista.idade} anos",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )
                           ],
@@ -95,14 +94,14 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                             Flexible(
                               child: Text(
                                 "${widget.motorista.nome} ${widget.motorista.sobrenome}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.verified,
                               color: AppColors.azulClaro,
                             ),
@@ -110,14 +109,15 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.assignment),
-                            SizedBox(
+                            const Icon(Icons.assignment),
+                            const SizedBox(
                               width: 8,
                             ),
                             Flexible(
                               child: Text(
                                 widget.motorista.curso,
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ],
@@ -128,20 +128,20 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             RatingBar.builder(
                 allowHalfRating: true,
                 initialRating: 5,
-                itemBuilder: (context, _) => Icon(
+                itemBuilder: (context, _) => const Icon(
                       Icons.star,
                       color: AppColors.vermelhoGrena,
                     ),
                 onRatingUpdate: (val) {
                   rating = val;
                 }),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -151,12 +151,12 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
             ),
             TextButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   "Escolhe outro valor...",
                   style: TextStyle(
                       fontSize: 18, decoration: TextDecoration.underline),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Expanded(

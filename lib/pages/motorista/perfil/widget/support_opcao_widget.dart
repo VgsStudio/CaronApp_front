@@ -17,7 +17,7 @@ class SupportOpcaoWidget extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           width: MediaQuery.of(context).size.width / 1.9,
           height: MediaQuery.of(context).size.height / 30,
           decoration: BoxDecoration(

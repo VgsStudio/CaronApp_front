@@ -23,8 +23,8 @@ class OpcaoCaronaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
-      margin: EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(vertical: 16),
       width: MediaQuery.of(context).size.width / 1.2,
       decoration: BoxDecoration(
           color: AppColors.cinzaEscuro,
@@ -34,14 +34,14 @@ class OpcaoCaronaWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FittedBox(
+              const FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(
                   'Horário de partida: ',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(right: 8)),
+              const Padding(padding: EdgeInsets.only(right: 8)),
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
@@ -50,12 +50,13 @@ class OpcaoCaronaWidget extends StatelessWidget {
                 ),
                 child: Text(
                   "${horario.hour}:${horario.minute.toString().padLeft(2, '0')}",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Row(
@@ -69,22 +70,22 @@ class OpcaoCaronaWidget extends StatelessWidget {
                   AssetImage("assets/images/where to.png"),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Instituto Mauá de Tecnologia',
+                  const Text('Instituto Mauá de Tecnologia',
                       textScaleFactor: 1.3,
                       style: TextStyle(color: AppColors.cinzaClaro)),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Text(
                     local.title,
                     textScaleFactor: 1.3,
-                    style: TextStyle(color: AppColors.cinzaClaro),
+                    style: const TextStyle(color: AppColors.cinzaClaro),
                   ),
                 ],
               ),
@@ -133,13 +134,13 @@ class OpcaoCaronaWidget extends StatelessWidget {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.1,
-                        child: Icon(
+                        child: const Icon(
                           Icons.verified,
                           color: AppColors.azulClaro,
                         ),
                       )
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
@@ -166,7 +167,7 @@ class OpcaoCaronaWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(

@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import '../../shared/themes/app_colors.dart';
 
 class AppBarMapWidget extends StatefulWidget {
@@ -70,7 +67,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 SizedBox(
@@ -97,7 +94,6 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                               width: 0,
                               style: BorderStyle.none,
                             ),
-
                           ),
                           filled: true,
                           fillColor: AppColors.preto),

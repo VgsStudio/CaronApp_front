@@ -12,7 +12,7 @@ class Motorista {
   late String genero;
   late int ano;
   late int idade;
-  late var foto;
+  late String foto;
   late String bio;
   late int nViagens;
 

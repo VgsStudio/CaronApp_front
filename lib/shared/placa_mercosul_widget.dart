@@ -16,14 +16,15 @@ class PlacaMercosulWidget extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 2.25),
           color: Colors.white,
-          borderRadius: BorderRadiusDirectional.all(Radius.circular(3.75))),
+          borderRadius:
+              const BorderRadiusDirectional.all(Radius.circular(3.75))),
       child: Column(
         children: [
           Container(
             //azul
             width: 112.5,
             height: 11.25,
-            color: Color(0xff003399),
+            color: const Color(0xff003399),
             child: Padding(
               padding: const EdgeInsets.all(3),
               child: Row(
@@ -35,7 +36,7 @@ class PlacaMercosulWidget extends StatelessWidget {
                       height: 3,
                       color: Colors.white,
                     ),
-                    Text('BRASIL',
+                    const Text('BRASIL',
                         style: TextStyle(
                             fontSize: 6,
                             color: Colors.white,
@@ -58,10 +59,10 @@ class PlacaMercosulWidget extends StatelessWidget {
                   ]),
             ),
           ),
-          SizedBox(height: 5.25),
+          const SizedBox(height: 5.25),
           Text(
             placa,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 18, color: Colors.black, fontFamily: 'FE-FONT'),
           )
         ],

@@ -11,13 +11,13 @@ class DrawerMenuOptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Container(
-      margin: EdgeInsets.symmetric(vertical: 16),
+      margin: const EdgeInsets.symmetric(vertical: 16),
       width: double.infinity,
       child: GestureDetector(
         onTap: onTap,
         child: Column(
           children: [
-            Divider(
+            const Divider(
               thickness: 2,
               color: AppColors.cinzaMaisClaro,
             ),
@@ -28,12 +28,12 @@ class DrawerMenuOptionWidget extends StatelessWidget {
                 Text(
                   textAlign: TextAlign.center,
                   option,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(child: Icon(Icons.keyboard_arrow_right_sharp))
               ],
             ),
-            Divider(
+            const Divider(
               thickness: 2,
               color: AppColors.cinzaMaisClaro,
             ),

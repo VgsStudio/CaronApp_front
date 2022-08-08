@@ -10,7 +10,8 @@ class HorariosPage extends StatefulWidget {
   final Local localRequisitado;
   final Function(Motorista) onTap;
 
-  HorariosPage({Key? key, required this.localRequisitado, required this.onTap})
+  const HorariosPage(
+      {Key? key, required this.localRequisitado, required this.onTap})
       : super(key: key);
 
   @override
@@ -61,15 +62,16 @@ class _HorariosPageState extends State<HorariosPage> {
             child: AppBarTransparenteWidget()),
         body: Container(
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+            decoration:
+                const BoxDecoration(gradient: AppColors.backgroundGradient),
             child: Column(children: [
               const SizedBox(height: 40),
               Text(
                 "${diasDaSemana[diaAtual.weekday - 1]}, ${diaAtual.day} de ${meses[diaAtual.month - 1]}",
-                style: TextStyle(fontSize: 24),
+                style: const TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              caronas.length > 0
+              caronas.isNotEmpty
                   ? Expanded(
                       child: ListView.builder(
                         padding: EdgeInsets.zero,
@@ -98,7 +100,7 @@ class _HorariosPageState extends State<HorariosPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Flexible(
+                        const Flexible(
                           child: Text(
                             "No momento, não há caronas disponíveis para esta região!",
                             style: TextStyle(fontSize: 36),

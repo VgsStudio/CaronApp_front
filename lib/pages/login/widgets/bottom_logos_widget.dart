@@ -1,7 +1,5 @@
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class BottomLogosWidget extends StatelessWidget {
   const BottomLogosWidget({Key? key}) : super(key: key);

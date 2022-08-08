@@ -6,7 +6,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final tamanhoTela;
   final String valor;
   final bool isObscure;
-  final onChanged;
+  final void Function(String)? onChanged;
 
   const CustomTextFieldWidget(
       {Key? key,

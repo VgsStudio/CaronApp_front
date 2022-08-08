@@ -17,7 +17,7 @@ class ProfileHeaderDrawerWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-            margin: EdgeInsets.only(right: 16),
+            margin: const EdgeInsets.only(right: 16),
             // foto
             decoration: BoxDecoration(
                 color: AppColors.cinzaMaisClaro,
@@ -39,11 +39,13 @@ class ProfileHeaderDrawerWidget extends StatelessWidget {
               ),
               Text(
                 info.nome,
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+                style:
+                    const TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
               ),
               Text(
-                info.idade.toString(),
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+                "${info.idade} anos",
+                style:
+                    const TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
               ),
               Container(
                 width: double.infinity,

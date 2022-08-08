@@ -21,8 +21,8 @@ class PreviewMotoristaWidget extends StatelessWidget {
     return Container(
       height: tamanhoTela.height * 0.4,
       width: tamanhoTela.width * 0.85,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      decoration: const BoxDecoration(
         color: AppColors.cinzaEscuro,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(40),
@@ -33,11 +33,11 @@ class PreviewMotoristaWidget extends StatelessWidget {
         InkWell(
           onTap: onTapReturn,
           child: Container(
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 Icon(
                   Icons.arrow_back,
                   color: AppColors.cinzaMaisClaro,
@@ -58,7 +58,7 @@ class PreviewMotoristaWidget extends StatelessWidget {
         ),
         Expanded(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             decoration: BoxDecoration(
                 color: AppColors.cinzaEscuro,
                 borderRadius: BorderRadius.circular(16)),
@@ -68,7 +68,7 @@ class PreviewMotoristaWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8),
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
                       color: AppColors.cinzaClaro,
                       borderRadius: BorderRadius.circular(44),
@@ -87,22 +87,22 @@ class PreviewMotoristaWidget extends StatelessWidget {
                         children: [
                           Text(
                             motorista.rate.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: AppColors.brancosSub,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
                           ),
                           Text(
                             "${motorista.idade} anos",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           )
                         ],
@@ -113,15 +113,15 @@ class PreviewMotoristaWidget extends StatelessWidget {
                           Flexible(
                             child: Text(
                               "${motorista.nome} ${motorista.sobrenome}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.verified,
                             color: AppColors.azulClaro,
                           ),
@@ -130,14 +130,14 @@ class PreviewMotoristaWidget extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.assignment),
-                          SizedBox(
+                          const Icon(Icons.assignment),
+                          const SizedBox(
                             width: 8,
                           ),
                           Flexible(
                             child: Text(
                               motorista.curso,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],

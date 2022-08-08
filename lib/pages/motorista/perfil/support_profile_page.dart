@@ -1,6 +1,7 @@
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
 import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/app_bar_transparente_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
@@ -10,37 +11,22 @@ import 'widget/support_opcao_widget.dart';
 class SupportProfilePage extends StatelessWidget {
   final Motorista motorista;
 
-  SupportProfilePage({Key? key, required this.motorista}) : super(key: key);
+  const SupportProfilePage({Key? key, required this.motorista})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(40),
+          child: AppBarTransparenteWidget()),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: SizedBox(
-              height: 40,
-              width: 40,
-              child: IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 40,
-                  ),
-                  tooltip: 'Voltar',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.02,
-          ),
+          const SizedBox(),
           Container(
-            margin: EdgeInsets.all(4),
-            padding: EdgeInsets.all(4),
+            margin: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             width: MediaQuery.of(context).size.width * 0.95,
             decoration: BoxDecoration(
                 color: AppColors.cinzaEscuro,
@@ -117,7 +103,7 @@ class SupportProfilePage extends StatelessWidget {
                         children: [
                           SizedBox(
                               width: MediaQuery.of(context).size.width * 0.05,
-                              child: Icon(Icons.assignment)),
+                              child: const Icon(Icons.assignment)),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: Text(

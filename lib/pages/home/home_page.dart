@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   late GoogleMapController mapController;
-  Set<Marker> markers = Set<Marker>();
+  Set<Marker> markers = <Marker>{};
   bool isOpcoesOpen = false;
   int index = -1;
 
@@ -61,14 +61,14 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           size: 32,
           color: AppColors.vermelhoGrena,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      drawer: DrawerHomePageWidget(),
+      drawer: const DrawerHomePageWidget(),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 48),
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                     color: AppColors.cinzaClaro,
                   ),
                   decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.access_time),
+                      suffixIcon: const Icon(Icons.access_time),
                       contentPadding: const EdgeInsets.only(left: 8),
                       hintText: "Para onde deseja ir?",
                       border: OutlineInputBorder(
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                           choosePlace: _choosePlace,
                           index: index,
                         ))),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
