@@ -12,7 +12,7 @@ import 'package:flutter_svg/svg.dart';
 class DriverProfilePage extends StatelessWidget {
   final Motorista motorista;
 
-  DriverProfilePage({Key? key, required this.motorista}) : super(key: key);
+  const DriverProfilePage({Key? key, required this.motorista}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class DriverProfilePage extends StatelessWidget {
                             ],
                           ),
                           const Padding(padding: EdgeInsets.only(right: 8)),
-                          Icon(
+                          const Icon(
                             Icons.verified,
                             color: AppColors.azulClaro,
                           ),
@@ -107,8 +107,8 @@ class DriverProfilePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.assignment),
-                          Padding(padding: EdgeInsets.only(left: 5)),
+                          const Icon(Icons.assignment),
+                          const Padding(padding: EdgeInsets.only(left: 5)),
                           Text(motorista.curso, textScaleFactor: 1.5),
                         ],
                       ),
@@ -141,9 +141,9 @@ class DriverProfilePage extends StatelessWidget {
                         FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(motorista.carro,
-                              style: TextStyle(fontSize: 18)),
+                              style: const TextStyle(fontSize: 18)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         PlacaMercosulWidget(placa: motorista.placa)
@@ -160,7 +160,7 @@ class DriverProfilePage extends StatelessWidget {
                           child: Text('Selos Recentes: ',
                               style: TextStyle(fontSize: 18)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         Image.asset(

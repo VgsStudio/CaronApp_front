@@ -1,17 +1,13 @@
-import 'dart:math';
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
-import 'package:caronapp_front/pages/motorista/perfil/driver_profile_page.dart';
-import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
 
 class ChatProfilePage extends StatelessWidget {
-  static final _random = Random();
   final Motorista motorista;
 
-  ChatProfilePage({
+  const ChatProfilePage({
     Key? key,
     required this.motorista,
   }) : super(key: key);
@@ -32,7 +28,7 @@ class ChatProfilePage extends StatelessWidget {
                       height: 45,
                       width: 45,
                       multiavatar(motorista.foto, trBackground: true))),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               SizedBox(
@@ -42,7 +38,7 @@ class ChatProfilePage extends StatelessWidget {
                   )),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.01,
-                child: Icon(
+                child: const Icon(
                   Icons.circle,
                   color: AppColors.verdeClaro,
                 ),

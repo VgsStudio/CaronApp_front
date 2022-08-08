@@ -2,9 +2,9 @@ import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ButtomHomeScreenWidget extends StatelessWidget {
-  final icone;
+  final IconData icone;
   final String text;
-  final onTap;
+  final void Function()? onTap;
 
   const ButtomHomeScreenWidget({
     Key? key,
@@ -21,7 +21,7 @@ class ButtomHomeScreenWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
             width: tamanhoTela.width * 0.2,
@@ -35,7 +35,7 @@ class ButtomHomeScreenWidget extends StatelessWidget {
             ),
           ),
           Text(text),
-          SizedBox(
+          const SizedBox(
             height: 16,
           )
         ],

@@ -11,7 +11,7 @@ class Usuario {
   late String genero;
   late int ano;
   late int idade;
-  late var foto;
+  late String foto;
 
   Usuario(
     this.nome,

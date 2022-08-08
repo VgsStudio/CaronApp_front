@@ -110,9 +110,8 @@ class CadastroTextFieldWidget extends StatelessWidget {
                 ? MaskTextInputFormatter(
                     mask: '#' * 150, filter: {"#": RegExp("^[A-zÀ-ú '´]+")})
                 : nullMask;
-    var tamanhoTela = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: TextFormField(
         inputFormatters: [maskFormatter],
         validator: validator,
@@ -124,9 +123,10 @@ class CadastroTextFieldWidget extends StatelessWidget {
         style: const TextStyle(fontSize: 16),
         decoration: InputDecoration(
             counterText: '',
+            errorStyle: TextStyle(fontSize: 0),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                     color: AppColors.vermelhoGrena,
                     width: 0.5,
                     style: BorderStyle.solid)),

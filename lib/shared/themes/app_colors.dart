@@ -4,7 +4,7 @@ class AppColors {
   static const vermelhoGrena = Color(0xFFB82423);
   static const cinzaBackground = Color(0xFF383838);
   static const cinzaEscuro = Color(0xFF202020);
-  static const cizaMedio = Color(0xFF312B2B);
+  static const cinzaMedio = Color(0xFF312B2B);
   static const cinzaClaro = Color(0xFF808080);
   static const cinzaMaisClaro = Color(0xFF8A8A8A);
   static const pretoSub = Color(0xFF161616);
@@ -14,7 +14,7 @@ class AppColors {
 
   static const gradientBackgroundList = [
     AppColors.cinzaBackground,
-    AppColors.cizaMedio
+    AppColors.cinzaMedio
   ];
 
   static const backgroundGradient = LinearGradient(

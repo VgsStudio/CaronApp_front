@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:caronapp_front/pages/final_corrida/avalie_motorista_page.dart';
 import 'package:caronapp_front/pages/mapa/appbar_map_widget.dart';
 import 'package:caronapp_front/pages/mapa/entities.dart/locais_json.dart';
@@ -8,7 +5,6 @@ import 'package:caronapp_front/pages/mapa/widget/opcoes_widget.dart';
 import 'package:caronapp_front/pages/mapa/widget/preview_motorista_widget.dart';
 import 'package:caronapp_front/pages/motorista/horarios/horarios_page.dart';
 import 'package:caronapp_front/pages/motorista/models/motorista/Motorista.dart';
-import 'package:caronapp_front/pages/motorista/models/motorista/motorista_json.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +17,8 @@ class MapaPage extends StatefulWidget {
   final int? buttonOption;
   final bool? focarNoTextForm;
 
-  MapaPage({Key? key, this.buttonOption = -1, this.focarNoTextForm = false})
+  const MapaPage(
+      {Key? key, this.buttonOption = -1, this.focarNoTextForm = false})
       : super(key: key);
 
   @override
@@ -51,7 +48,7 @@ class _MapaPageState extends State<MapaPage> {
   String query = '';
 
   late GoogleMapController mapController;
-  Set<Marker> markers = Set<Marker>();
+  Set<Marker> markers = <Marker>{};
   bool isOpcoesOpen = false;
   int index = -1;
 
@@ -144,7 +141,7 @@ class _MapaPageState extends State<MapaPage> {
                   )
                 : const SizedBox.shrink(),
             isCaronaStarted
-                ? Align(
+                ? const Align(
                     alignment: Alignment.bottomCenter,
                     child: CorridaAndamentoWidget())
                 : const SizedBox.shrink(),
@@ -244,7 +241,7 @@ class _MapaPageState extends State<MapaPage> {
                   AvalieMotoristaPage(motorista: motoristaEscolhido),
               transitionsBuilder: (c, anim, a2, child) => SlideTransition(
                     position:
-                        Tween(begin: Offset(0, 1.0), end: Offset(0.0, 0.0))
+                        Tween(begin: const Offset(0, 1.0), end: const Offset(0.0, 0.0))
                             .animate(anim),
                     child: child,
                   )));

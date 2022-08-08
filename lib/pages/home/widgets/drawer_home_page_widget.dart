@@ -1,12 +1,8 @@
-import 'dart:developer';
-
 import 'package:caronapp_front/models/usuario/usuarios_json.dart';
 import 'package:caronapp_front/pages/home/widgets/profile_header_drawer_widget.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:multiavatar/multiavatar.dart';
 
 import 'drawer_menu_option_widget.dart';
 
@@ -21,7 +17,7 @@ class DrawerHomePageWidget extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => LoginPage(),
+              pageBuilder: (c, a1, a2) => const LoginPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -29,13 +25,13 @@ class DrawerHomePageWidget extends StatelessWidget {
 
     return Drawer(
         backgroundColor: AppColors.cinzaBackground,
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                decoration: BoxDecoration(color: AppColors.cinzaEscuro),
+                decoration: const BoxDecoration(color: AppColors.cinzaEscuro),
                 child: ProfileHeaderDrawerWidget(
                   info: usuariosList[2],
                 ),
@@ -66,9 +62,9 @@ class DrawerHomePageWidget extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text("Versão:"),
-                        Text("0.1.0"),
+                        Text("0.1.2"),
                       ],
                     )
                   ],

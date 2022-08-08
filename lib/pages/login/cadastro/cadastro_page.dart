@@ -3,11 +3,9 @@ import 'package:caronapp_front/pages/login/cadastro/widgets/cadastro_textfield_w
 import 'package:caronapp_front/pages/login/cadastro/widgets/definir_tipo_textfield_enum.dart';
 import 'package:caronapp_front/pages/login/login/login_page.dart';
 import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
-import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({Key? key}) : super(key: key);
@@ -34,20 +32,19 @@ class _CadastroPageState extends State<CadastroPage> {
   ];
   List<String> anos = ['1°', '2°', '3°', '4°', '5°', '6°'];
   List<String> generos = ['Masculino', 'Feminino', 'Não-binário', 'Outro'];
-  String? selectedGenero = null;
-  String? selectedAno = null;
-  String? selectedCurso = null;
+  String? selectedGenero;
+  String? selectedAno;
+  String? selectedCurso;
   bool nomeSocial = false;
   DateTime date = DateTime.now();
   final formKey = GlobalKey<FormState>();
-  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     navigateToHome() async {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => HomePage(),
+              pageBuilder: (c, a1, a2) => const HomePage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -57,13 +54,11 @@ class _CadastroPageState extends State<CadastroPage> {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => LoginPage(),
+              pageBuilder: (c, a1, a2) => const LoginPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
     }
-
-    var tamanhoTela = MediaQuery.of(context).size;
 
     return Form(
       key: formKey,
@@ -132,7 +127,7 @@ class _CadastroPageState extends State<CadastroPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Nome Social",
+                            const Text("Nome Social",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                             Checkbox(
@@ -143,7 +138,6 @@ class _CadastroPageState extends State<CadastroPage> {
                                 setState(() {
                                   nomeSocial = !nomeSocial;
                                 });
-                                ;
                               },
                             ),
                           ],
@@ -155,7 +149,7 @@ class _CadastroPageState extends State<CadastroPage> {
                           isEnabled: nomeSocial,
                           valor: "Nome Social",
                           margin: 0,
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: const Icon(Icons.person),
                         ),
                       )
                     ],
@@ -169,18 +163,18 @@ class _CadastroPageState extends State<CadastroPage> {
                       color: AppColors.cinzaClaro,
                     ),
                   ),
-                  CadastroTextFieldWidget(
+                  const CadastroTextFieldWidget(
                     tipoCampoTextoEnum: TipoCampoTextoEnum.TELEFONE,
                     valor: "Telefone",
-                    prefixIcon: const Icon(
+                    prefixIcon: Icon(
                       Icons.phone,
                       color: AppColors.cinzaClaro,
                     ),
                   ),
-                  CadastroTextFieldWidget(
+                  const CadastroTextFieldWidget(
                     tipoCampoTextoEnum: TipoCampoTextoEnum.RA,
                     valor: "RA",
-                    prefixIcon: const Icon(
+                    prefixIcon: Icon(
                       Icons.school_sharp,
                       color: AppColors.cinzaClaro,
                     ),
@@ -194,17 +188,16 @@ class _CadastroPageState extends State<CadastroPage> {
                         Icons.lock,
                         color: AppColors.cinzaClaro,
                       )),
-
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
-                        Expanded(
+                        const Expanded(
                           flex: 2,
-                          child: const Text("Data de nascimento",
+                          child: Text("Data de nascimento",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         ),
@@ -216,7 +209,7 @@ class _CadastroPageState extends State<CadastroPage> {
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 padding: MaterialStateProperty.all<EdgeInsets>(
-                                    EdgeInsets.all(12)),
+                                    const EdgeInsets.all(12)),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         AppColors.cinzaEscuro)),
@@ -234,16 +227,16 @@ class _CadastroPageState extends State<CadastroPage> {
                             },
                             child: Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.calendar_today,
                                   color: AppColors.cinzaClaro,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Text(
                                   '${date.day}/${date.month}/${date.year}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: AppColors.cinzaClaro,
                                     fontSize: 16,
                                   ),
@@ -252,27 +245,27 @@ class _CadastroPageState extends State<CadastroPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                       ],
                     ),
                   ),
                   Row(children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
-                    Text('Curso',
+                    const Text('Curso',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         )),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     DropdownButton(
                         menuMaxHeight: 150,
-                        hint: Text('Selecione seu curso'),
+                        hint: const Text('Selecione seu curso'),
                         value: selectedCurso,
                         items: cursos
                             .map<DropdownMenuItem<String>>((String value) {
@@ -287,21 +280,20 @@ class _CadastroPageState extends State<CadastroPage> {
                           });
                         })
                   ]),
-
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      Text('Ano',
+                      const Text('Ano',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
-                      SizedBox(
+                      const SizedBox(
                         width: 35,
                       ),
                       DropdownButton(
                           menuMaxHeight: 150,
-                          hint: Text('Selecione o ano'),
+                          hint: const Text('Selecione o ano'),
                           value: selectedAno,
                           items: anos
                               .map<DropdownMenuItem<String>>((String value) {
@@ -319,18 +311,18 @@ class _CadastroPageState extends State<CadastroPage> {
                   ),
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      Text('Gênero',
+                      const Text('Gênero',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       DropdownButton(
                           menuMaxHeight: 150,
-                          hint: Text('Selecione seu gênero'),
+                          hint: const Text('Selecione seu gênero'),
                           value: selectedGenero,
                           items: generos
                               .map<DropdownMenuItem<String>>((String value) {
@@ -346,7 +338,6 @@ class _CadastroPageState extends State<CadastroPage> {
                           }),
                     ],
                   ),
-                  //TODO: termos (TextField, Text e TextButton)
                   const SizedBox(
                     height: 30,
                   ),
@@ -361,10 +352,10 @@ class _CadastroPageState extends State<CadastroPage> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 96,
                   ),
-                  BottomLogosWidget()
+                  const BottomLogosWidget()
                 ],
               ),
             ),

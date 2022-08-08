@@ -22,14 +22,15 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _navigateToLogin() async {
-    await Future.delayed(Duration(milliseconds: timer), () {});
-    Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-            pageBuilder: (c, a1, a2) => const LoginPage(),
-            transitionsBuilder: (c, anim, a2, child) =>
-                FadeTransition(opacity: anim, child: child),
-            transitionDuration: Duration(milliseconds: timer)));
+    await Future.delayed(Duration(milliseconds: timer), () {
+      Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => const LoginPage(),
+              transitionsBuilder: (c, anim, a2, child) =>
+                  FadeTransition(opacity: anim, child: child),
+              transitionDuration: Duration(milliseconds: timer)));
+    });
   }
 
   @override
@@ -38,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
       body: AnimatedContainer(
         duration: Duration(milliseconds: timer),
         child: Container(
-          decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+          decoration: const BoxDecoration(gradient: AppColors.backgroundGradient),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -46,11 +47,11 @@ class _SplashPageState extends State<SplashPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 64),
+                    const SizedBox(height: 64),
                     Image.asset(AppLogo.caronApp,
                         filterQuality: FilterQuality.high, scale: 3),
-                    SizedBox(height: 32),
-                    SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
+                    const SizedBox(height: 32),
+                    const SpinKitRing(color: AppColors.vermelhoGrena, size: 40),
                   ],
                 ),
               ),
@@ -59,7 +60,7 @@ class _SplashPageState extends State<SplashPage> {
                 filterQuality: FilterQuality.high,
                 scale: 6,
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
             ],
           ),
         ),

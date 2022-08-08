@@ -6,7 +6,7 @@ import '../entities.dart/Local.dart';
 class OpcoesWidget extends StatefulWidget {
   final bool isOpcoesOpen;
   final choose;
-  final locais;
+  final List<Local> locais;
 
   const OpcoesWidget(
       {Key? key,

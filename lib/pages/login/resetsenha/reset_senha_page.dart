@@ -5,8 +5,6 @@ import 'package:caronapp_front/pages/login/widgets/bottom_logos_widget.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ResetSenhaPage extends StatelessWidget {
   const ResetSenhaPage({Key? key}) : super(key: key);
@@ -17,7 +15,7 @@ class ResetSenhaPage extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => LoginPage(),
+              pageBuilder: (c, a1, a2) => const LoginPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -27,7 +25,7 @@ class ResetSenhaPage extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-              pageBuilder: (c, a1, a2) => CadastroPage(),
+              pageBuilder: (c, a1, a2) => const CadastroPage(),
               transitionsBuilder: (c, anim, a2, child) =>
                   FadeTransition(opacity: anim, child: child),
               transitionDuration: const Duration(milliseconds: 500)));
@@ -95,7 +93,7 @@ class ResetSenhaPage extends StatelessWidget {
                 ),
                 BotaoVermelhoWidget(
                     child: "Continuar", onPressed: navigateToLogin),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Padding(
@@ -117,8 +115,8 @@ class ResetSenhaPage extends StatelessWidget {
                             ))
                       ]),
                 ),
-                Spacer(),
-                BottomLogosWidget()
+                const Spacer(),
+                const BottomLogosWidget()
               ],
             ),
           ),

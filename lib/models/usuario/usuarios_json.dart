@@ -1,5 +1,4 @@
 import 'package:caronapp_front/models/usuario/Usario.dart';
-import 'package:multiavatar/multiavatar.dart';
 
 final usuariosList = <Usuario>[
   Usuario(

@@ -2,7 +2,7 @@ import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BotaoVermelhoWidget extends StatelessWidget {
-  final onPressed;
+  final void Function()? onPressed;
   final double fontSize;
   final String child;
   final double? width;

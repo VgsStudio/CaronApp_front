@@ -45,14 +45,14 @@ class HomeLocaisWidget extends StatelessWidget {
                   children: [
                     Text(
                       local.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 18,
                           color: AppColors.branco,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       local.snippet,
-                      style: TextStyle(color: AppColors.cinzaMaisClaro),
+                      style: const TextStyle(color: AppColors.cinzaMaisClaro),
                     ),
                   ],
                 ),
