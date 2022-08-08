@@ -88,6 +88,13 @@ class CadastroTextFieldWidget extends StatelessWidget {
                             }
                           }
                         : null;
+    var keyboardType = tipoCampoTextoEnum == TipoCampoTextoEnum.RA
+        ? TextInputType.number
+        : tipoCampoTextoEnum == TipoCampoTextoEnum.EMAIL
+            ? TextInputType.emailAddress
+            : tipoCampoTextoEnum == TipoCampoTextoEnum.TELEFONE
+                ? TextInputType.phone
+                : TextInputType.text;
     var nullMask = MaskTextInputFormatter();
     var maskFormatter = tipoCampoTextoEnum == TipoCampoTextoEnum.RA
         ? MaskTextInputFormatter(
@@ -112,10 +119,11 @@ class CadastroTextFieldWidget extends StatelessWidget {
         enabled: isEnabled,
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
         obscureText: isObscure,
+        keyboardType: keyboardType,
         style: const TextStyle(fontSize: 16),
         decoration: InputDecoration(
             counterText: '',
-            errorStyle: const TextStyle(fontSize: 0),
+            errorStyle: TextStyle(fontSize: 0),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(

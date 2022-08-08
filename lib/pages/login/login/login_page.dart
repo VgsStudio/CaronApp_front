@@ -1,11 +1,12 @@
 import 'package:caronapp_front/pages/home/home_page.dart';
 import 'package:caronapp_front/pages/login/cadastro/cadastro_page.dart';
+import 'package:caronapp_front/pages/login/cadastro/widgets/definir_tipo_textfield_enum.dart';
 import 'package:caronapp_front/pages/login/resetsenha/reset_senha_page.dart';
+import 'package:caronapp_front/shared/logo/app_logos.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
+import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/botao_vermelho_widget.dart';
-import '../../../shared/logo/app_logos.dart';
 import '../widgets/custom_textfield_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -72,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 72),
                     CustomTextFieldWidget(
+                        tipoCampoTextoEnum: TipoCampoTextoEnum.RA,
                         tamanhoTela: tamanhoTela,
                         valor: "RA",
                         onChanged: (value) {}),
