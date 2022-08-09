@@ -105,7 +105,6 @@ class _CadastroPageState extends State<CadastroPage> {
                             valor: "Nome",
                             prefixIcon: Icon(
                               Icons.person,
-                              color: AppColors.cinzaClaro,
                             )),
                       ),
                       Expanded(
@@ -115,7 +114,6 @@ class _CadastroPageState extends State<CadastroPage> {
                             maxLength: 100,
                             prefixIcon: Icon(
                               Icons.person,
-                              color: AppColors.cinzaClaro,
                             )),
                       ),
                     ],
@@ -160,7 +158,6 @@ class _CadastroPageState extends State<CadastroPage> {
                     maxLength: 150,
                     prefixIcon: Icon(
                       Icons.email_outlined,
-                      color: AppColors.cinzaClaro,
                     ),
                   ),
                   const CadastroTextFieldWidget(
@@ -168,7 +165,6 @@ class _CadastroPageState extends State<CadastroPage> {
                     valor: "Telefone",
                     prefixIcon: Icon(
                       Icons.phone,
-                      color: AppColors.cinzaClaro,
                     ),
                   ),
                   const CadastroTextFieldWidget(
@@ -176,7 +172,6 @@ class _CadastroPageState extends State<CadastroPage> {
                     valor: "RA",
                     prefixIcon: Icon(
                       Icons.school_sharp,
-                      color: AppColors.cinzaClaro,
                     ),
                   ),
                   const CadastroTextFieldWidget(
@@ -186,7 +181,6 @@ class _CadastroPageState extends State<CadastroPage> {
                       isObscure: true,
                       prefixIcon: Icon(
                         Icons.lock,
-                        color: AppColors.cinzaClaro,
                       )),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -227,10 +221,8 @@ class _CadastroPageState extends State<CadastroPage> {
                             },
                             child: Row(
                               children: [
-                                const Icon(
-                                  Icons.calendar_today,
-                                  color: AppColors.cinzaClaro,
-                                ),
+                                const Icon(Icons.calendar_today,
+                                    color: AppColors.cinzaClaro),
                                 const SizedBox(
                                   width: 5,
                                 ),

@@ -1,4 +1,4 @@
-import 'package:caronapp_front/models/usuario/Usario.dart';
+import 'package:caronapp_front/models/usuario/Usuario.dart';
 
 final usuariosList = <Usuario>[
   Usuario(

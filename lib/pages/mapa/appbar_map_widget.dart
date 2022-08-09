@@ -73,6 +73,7 @@ class _AppBarMapWidgetState extends State<AppBarMapWidget> {
                 SizedBox(
                   height: 40,
                   child: Focus(
+                    focusNode: widget.focusNode,
                     onFocusChange: (opened) {
                       if (opened) {
                         widget.trocarBooleano();

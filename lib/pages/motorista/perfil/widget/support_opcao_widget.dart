@@ -21,9 +21,9 @@ class SupportOpcaoWidget extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 1.9,
           height: MediaQuery.of(context).size.height / 30,
           decoration: BoxDecoration(
-              color: AppColors.cinzaClaro,
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: AppColors.brancosSub)),
+            color: AppColors.cinzaEscuro,
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: Text(texto, textAlign: TextAlign.center, textScaleFactor: 1.2),
         ),
       ),

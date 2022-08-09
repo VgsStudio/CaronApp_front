@@ -1,5 +1,7 @@
 import 'package:caronapp_front/pages/final_corrida/widgets/opcao_gorjeta.dart';
 import 'package:caronapp_front/pages/home/home_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/chat_profile_page.dart';
+import 'package:caronapp_front/pages/motorista/perfil/support_profile_page.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:caronapp_front/shared/widgets/botao_vermelho_widget.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +175,15 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                           size: 60,
                         ),
                         tooltip: 'Denunciar',
-                        onPressed: () {}),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SupportProfilePage(
+                                      motorista: widget.motorista,
+                                    )),
+                          );
+                        }),
                   ),
                   SizedBox(
                     height: 60,
@@ -185,7 +195,15 @@ class _AvalieMotoristaPageState extends State<AvalieMotoristaPage> {
                           size: 60,
                         ),
                         tooltip: 'Chat',
-                        onPressed: () {}),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChatProfilePage(
+                                      motorista: widget.motorista,
+                                    )),
+                          );
+                        }),
                   ),
                 ],
               ),

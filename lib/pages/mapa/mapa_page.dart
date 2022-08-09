@@ -240,9 +240,10 @@ class _MapaPageState extends State<MapaPage> {
               pageBuilder: (c, a1, a2) =>
                   AvalieMotoristaPage(motorista: motoristaEscolhido),
               transitionsBuilder: (c, anim, a2, child) => SlideTransition(
-                    position:
-                        Tween(begin: const Offset(0, 1.0), end: const Offset(0.0, 0.0))
-                            .animate(anim),
+                    position: Tween(
+                            begin: const Offset(0, 1.0),
+                            end: const Offset(0.0, 0.0))
+                        .animate(anim),
                     child: child,
                   )));
     });
