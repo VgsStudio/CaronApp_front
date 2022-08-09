@@ -1,4 +1,4 @@
-import 'package:caronapp_front/models/usuario/Usario.dart';
+import 'package:caronapp_front/models/usuario/Usuario.dart';
 import 'package:caronapp_front/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
